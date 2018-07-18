@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+
+    <!--    id > class > tag        后代选择器   子代选择器
+            100    10     1
+    -->
+    <style>
+
+        #div2{
+                background: #ff0000;
+                height: 100px;
+                font-size: 30px;
+        }
+
+        div{
+              background: #0000FF;
+              height: 100px;
+              font-size: 30px;
+          }
+        .cl1{
+            background:#FF00FF;
+            height: 100px;
+            font-size: 30px;
+        }
+        .cl1 h1
+        {
+            background:#FF00FF;
+            height: 50px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="div2">
+        <div id="div2" class="cl2">
+            div1
+        </div>
+    </div>
+    <div class="cl1">
+        div2
+    </div>
+    <div>
+        <h1>
+            div3
+        </h1>
+    </div>
+</body>
+</html>

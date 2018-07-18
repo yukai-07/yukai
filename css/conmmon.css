@@ -1,0 +1,14 @@
+*{
+    margin:0;
+    padding: 0;
+}
+.wrapper{
+    width: 1230px;
+    margin:0 auto;/*居中*/
+}
+a{
+    text-decoration: none;/*取消下划线*/
+}
+li{
+    list-style: none ;/*取消圆点*/
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width:100px;
+        }
+        #div1::after{
+            content:'';
+            height:0;
+            border: 10px solid transparent;/*边框实心、透明*/
+            border-left-color: #cccccc;
+        }
+        #div1::selection{/*选中颜色*/
+            color: yellow;
+            background: #ff0000;
+        }
+        #div1::first-line{
+            color: #0000FF;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    按时发生佛盎司后覅时候覅时候覅还是覅发货奥术大师大所大所大所大所
+</div>
+
+<!--<input type="text"placeholder="aaa">-->
+
+</body>
+</html>
