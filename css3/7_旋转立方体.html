@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background: black;
+            perspective: 800px;/*视线距离*/
+            perspective-origin: center 50px;/*视角*/
+        }
+        div:not(#container){
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,.5);
+            position: absolute;
+            border-radius:10px;
+        }
+        #container{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            line-height: 200px;
+            font-size: 40px;
+            text-align: center;
+            transform-style: preserve-3d;
+            animation:xxx 4s linear infinite;
+
+        }
+        @keyframes xxx{
+            0%{
+
+            }
+            50%{
+                transform: rotateY(360deg);
+            }
+            100%{
+                transform: rotateX(-90deg);
+            }
+        }
+        .two{
+            transform: translateZ(100px);
+        }
+        .four{
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        .five{
+            transform: rotateY(270deg) translateZ(100px);
+        }
+        .three{
+            transform:rotateY(90deg) translateZ(100px);
+        }
+        .one{
+            transform:rotateX(90deg) translateZ(100px);
+        }
+        .six{
+            transform:rotateX(-90deg) translateZ(100px);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="one">狗冠</div>
+        <div class="two">李</div>
+        <div class="three">狗</div>
+        <div class="four">是</div>
+        <div class="five">冠</div>
+        <div class="six">狗冠</div>
+    </div>
+
+</body>
+</html>
