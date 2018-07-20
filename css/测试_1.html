@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border:1px solid red;
+        }
+        #border{
+            width: 403px;
+            height: 404px;
+            border: 1px solid white;
+            position: relative;
+        }
+        .div1{
+            position: absolute;
+        }
+        .div2{
+            position: absolute;
+            top: 0;
+            left: 201px;
+        }
+        .div3{
+            position: absolute;
+            top: 201px;
+            left: 0;
+        }
+        .div4{
+            position: absolute;
+            top: 201px;
+            left: 201px;
+        }
+        #border div:hover{
+            border:1px solid green;
+            z-index: 1;
+        }
+        /*.div1:hover{*/
+            /*border:1px solid green;*/
+            /*z-index: 1;*/
+        /*}*/
+        /*.div2:hover{*/
+            /*border:1px solid green;*/
+            /*z-index: 1;*/
+        /*}*/
+        /*.div3:hover{*/
+            /*border:1px solid green;*/
+            /*z-index: 1;*/
+        /*}*/
+        /*.div4:hover{*/
+            /*border:1px solid green;*/
+            /*z-index: 1;*/
+        /*}*/
+
+    </style>
+</head>
+<body>
+<div id="border">
+    <div class="div1">
+
+    </div>
+    <div class="div2">
+
+    </div>
+    <div class="div3">
+
+    </div>
+    <div class="div4">
+
+    </div>
+</div>
+</body>
+</html>
