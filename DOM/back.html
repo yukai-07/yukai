@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<label for="div1">用户名：</label>
+<input id="div1" type="text">
+<label for="pwd">密码：</label>
+<input id="pwd" type="password">
+<button id="btn">返回</button>
+<button id="reload">reload</button>
+<script>
+    var oBtn = document.getElementById('btn');
+    oBtn.onclick = function () {
+        //history.back();//返回上一网页
+        // history.forward();//跳转到下一网页
+        // window.location.href = "http://www.baidu.com"//跳转到指定网址
+        console.log(location.protocol);
+        console.log(navigator.userAgent);
+    }
+
+    var oRld = document.getElementById('reload');
+    oRld.onclick = function(){
+        location.reload();
+    }
+</script>
+</body>
+</html>

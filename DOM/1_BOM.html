@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="div1">用户名：</label>
+<input id="div1" type="text">
+<label for="pwd">密码：</label>
+<input id="pwd" type="password">
+<script>
+    // var oDiv = document.getElementById('dv1');
+    // div1.focus();
+    // console.log(window.screenLeft || window.screenX);//输出浏览器框体距左的距离
+    // console.log(window.screenTop || window.screenY);//输出浏览器框体距顶的距离
+    // console.log(window.innerWidth);//文本档宽度
+    // console.log(window.innerHeight);//文本档高度
+    // console.log(window.outerHeight);//浏览器高度
+    // var w = open('http://www.baidu.com','','width=300,height=200,left=200,top=200')
+    var xx = confirm('确认删除吗');
+       if(xx){
+           console.log('删除成功');
+       }else{
+           console.log('已取消');
+       }
+
+    //    var timer = setTimeout(function(){
+    //        console.log('111111');
+    //        console.log(2222);
+    //    },2000);
+    //    console.log(timer);
+    //
+    //
+    //    var timer1 = setTimeout(function(){
+    //        console.log('sxxxx');
+    //        console.log('xxxx');
+    //    },2000);
+    //    console.log(timer1);
+    //
+    //    clearTimeout(timer1);
+
+    var timer = setInterval(function(){
+        console.log(1);
+    },1000)
+
+    btn.onclick = function(){
+        clearInterval(timer);
+    }
+</script>
+</body>
+</html>

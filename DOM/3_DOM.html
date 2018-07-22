@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="p1">aaaaaa</p>
+<input type="text" name="p2">
+<input type="text" name="p2">
+<input type="text" name="p2">
+<!--<div>-->
+    <!--<p>bbbbb</p>-->
+    <!--<h6>cccc</h6>-->
+<!--</div>-->
+<script>
+    // var p = document.getElementById('p1');//获取id内容
+    var p = document.getElementsByName('p2');
+    p[0].style.color = 'red';
+    p[1].style.background = 'blue';
+    p.onclick = function () {
+        console.log(11111);
+    }
+
+</script>
+</body>
+</html>
