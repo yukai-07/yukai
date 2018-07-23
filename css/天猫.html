@@ -1241,17 +1241,28 @@
                 <div class="brand1-one">
                     <ul>
                         <li class="green">
-                            <a href="">
-                                <p class="size1">今日疯抢</p>
-                            </a>
+                            <a href="">今日疯抢</a>
                         </li>
-                        <li class="white">
-                            <a href="">
-                                <p class="size2">量贩装</p>
-                            </a>
+                        <li>
+                            <a href="">量贩装</a>
                         </li>
                     </ul>
-                    <img src="../img/33.jpg" alt="">
+                    <img class="selected" src="../img/33.jpg" alt="">
+                    <img src="../img/40.jpg" alt="">
+                    <div class="sltd">
+                        <p>
+                            <img src="../img/42.png" alt="">
+                            <span>限时限量疯抢</span>
+                        </p>
+                        <p>1元超值疯抢中</p>
+                    </div>
+                    <div>
+                        <p>
+                            <img src="../img/42.png" alt="">
+                            <span>蓝月亮洗洁精</span>
+                        </p>
+                        <p>限时抢半价</p>
+                    </div>
                 </div>
             </div>
             <div class="brand2">
@@ -1305,5 +1316,26 @@
         </div>
     </div>
 </div>
+<script>
+    var dBrand1 = document.getElementsByClassName('brand1-one');
+    var aLi = dBrand1[0].getElementsByTagName('li');
+    var aImg = dBrand1[0].getElementsByTagName('img');
+    var aDiv = dBrand1[0].getElementsByTagName('div');
+    for (var i=0;i<aLi.length;i++) {
+        aLi[i].xx = i;
+        aLi[i].onmouseover = function () {
+            for(var j=0;j<aLi.length;j++){
+                aLi[j].className = '';
+                aImg[j].className = '';
+                aDiv[j].className = '';
+            }
+            this.className = 'green';
+            aImg[this.xx].className = 'selected';
+            aDiv[this.xx].className = 'sltd';
+            return false;
+        }
+    }
+
+</script>
 </body>
 </html>
