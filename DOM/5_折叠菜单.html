@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #menu{
+            width: 200px;
+            text-align: center;
+            margin: 100px auto;
+            border: 1px solid #000000;
+        }
+        #menu li a{
+            display: block;
+            width: 100%;
+            background: #000000;
+            color: #fff;
+        }
+        #menu .sub-menu{
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+<ul id="menu">
+    <li>
+        <a href="">管理区</a>
+        <ul class="sub-menu">
+            <li>001</li>
+            <li>002</li>
+            <li>003</li>
+        </ul>
+    </li>
+    <li>
+        <a href="">交流区</a>
+        <ul class="sub-menu">
+            <li>001</li>
+            <li>002</li>
+            <li>003</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var aA = document.getElementsByTagName('a');
+    var oSubMenu = document.getElementsByClassName('sub-menu');
+    for (var i=0;i < aA.length;i++) {
+        aA[i].xx = i;
+            aA[i].onclick = function() {
+                //通过style获取的是内联样式，此处block和none不可调换
+                if (oSubMenu[this.xx].style.display == 'block') {
+                    oSubMenu[this.xx].style.display = 'none';
+                } else {
+                oSubMenu[this.xx].style.display = 'block';
+            }
+                return  false;
+            }
+    }
+
+    //获取属性三种方法
+    //对象.currentStyle.xx     IE浏览器
+    //getComputedStyle(对象,false).xx   标准浏览器
+    //对象.style.xx   只能获取到内联样式
+    //封装函数解决兼容性问题
+    function getstyle(elem,prop) {
+        if(elem.currentStyle){
+            return elem.currentStyle[prop];
+        }else{
+            return getComputedStyle(elem,false)[prop];
+        }
+    }
+</script>
+</body>
+</html>
