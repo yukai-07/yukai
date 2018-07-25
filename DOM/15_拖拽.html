@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            background: red;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+</div>
+<script>
+    var oDiv = document.getElementsByTagName('div');
+    oDiv[0].onmousedown = function (e) {
+        var oLeft = e.clientX - oDiv[0].offsetLeft;
+        var oTop = e.clientY - oDiv[0].offsetTop;
+        document.onmousemove = function (e) {
+            var divLeft = e.clientX - oLeft;
+            var divTop = e.clientY - oTop;
+            if (divLeft>(document.documentElement.offsetWidth - oDiv[0].offsetWidth)) {
+                divLeft = document.documentElement.offsetWidth - oDiv[0].offsetWidth;
+            }else if (divLeft<0) {
+                divLeft = 0;
+            }
+            if (divTop>(window.innerHeight - oDiv[0].offsetHeight)) {
+                divTop = window.innerHeight - oDiv[0].offsetHeight;
+            }else if (divTop<0) {
+                divTop = 0;
+            }
+            oDiv[0].style.left = divLeft + 'px';
+            oDiv[0].style.top = divTop + 'px';
+        }
+        oDiv[0].onmouseup = function () {
+            document.onmousemove = null;
+        }
+    }
+
+</script>
+</body>
+</html>

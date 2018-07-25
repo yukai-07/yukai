@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    li{
+        list-style: none;
+    }
+    #container{
+        margin: 100px auto;
+        width: 400px;
+        height: 200px;
+        border: 1px solid black;
+        overflow: hidden;
+        position: relative;
+    }
+    #container .number{
+        width: 1000px;
+        position: absolute;
+        left: 0;
+    }
+    #container .number li{
+        float: left;
+        margin-right: 20px;
+        width: 100px;
+        height: 100px;
+        color: white;
+        font-size: 50px;
+        background: black;
+        text-align: center;
+        line-height: 100px;
+    }
+    #container .button p{
+        width: 50px;
+        height: 50px;
+        background: #cccccc;
+        text-align: center;
+        line-height: 50px;
+        float: left;
+        margin-left: 10px;
+    }
+    #container .button{
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform:translateX(-50%);
+    }
+    /*#container .button .left{*/
+        /*position: absolute;*/
+        /*top: 150px;*/
+        /*left: 130px;*/
+    /*}*/
+    /*#container .button .right{*/
+        /*position: absolute;*/
+        /*top: 150px;*/
+        /*left: 210px;*/
+    /*}*/
+</style>
+<body>
+<div id="container">
+    <ul class="number">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div class="button">
+        <p class="left">向左</p>
+        <p class="right">向右</p>
+    </div>
+</div>
+<script src="jslib.js"></script>
+<script>
+    var aLi = document.getElementsByTagName('li');
+    var aNumber = document.getElementsByClassName('number');
+    var oLift = getComputedStyle(aNumber[0],false).left;
+    var oWidth = getComputedStyle(aNumber[0],false).width;
+    var oLeft = document.getElementsByClassName('left');
+    var oRight = document.getElementsByClassName('right');
+    oLeft[0].onmouseover = function(){
+
+        clearInterval(timer);
+        playleft();
+    }
+    oRight[0].onmouseover = function () {
+        clearInterval(timer);
+        playright();
+    }
+
+
+    function playleft() {
+        timer = setInterval(function () {
+            if (Math.abs(parseInt(aNumber[0].style.left)) >=parseInt(oWidth)/2-20) {
+                oLift =0;
+            }else{
+                oLift=parseInt(oLift)-1;
+            }
+            aNumber[0].style.left = oLift+'px';
+        },5)
+    }
+    playleft();
+    function playright() {
+        timer = setInterval(function () {
+            if (parseInt(oLift) >=0) {
+                oLift = -480 +'px';
+            }else{
+                oLift=parseInt(oLift)+1;
+            }
+            aNumber[0].style.left = oLift+'px';
+
+        },5)
+    }
+</script>
+</body>
+</html>

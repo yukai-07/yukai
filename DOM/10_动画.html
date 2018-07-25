@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+
+</div>
+<script>
+    var oDiv = document.getElementById('div1');
+    timer = setInterval(function () {
+       var o = getComputedStyle(oDiv,false).opacity;
+       var w = getComputedStyle(oDiv,false).width;
+       if (o<0.1){
+           oDiv.style.opacity = 0;
+       } else{
+           oDiv.style.opacity = o * 0.98;
+       }
+       w = parseInt(w) + 10;
+       if(w>=1000){
+           w=1000;
+           oDiv.style.width = w +'px';
+           clearInterval(timer);
+       }else{
+           oDiv.style.width = w +'px';
+       }
+        console.log(w);
+    },50)
+</script>
+</body>
+</html>
