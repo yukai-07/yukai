@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 400px;
+            height: 400px;
+            background: red;
+            position: absolute;
+            cursor: move;
+        }
+        #container img{
+            float: left;
+        }
+        #big{
+            background: rgba(255,255,255,.6);
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            display: none;
+        }
+        #container_big{
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 0;
+            left: 400px;
+            margin-left: 20px;
+            overflow: hidden;
+            display: none;
+        }
+        #container_big img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <img src="img/6.jpg" alt="">
+    <div id="big">
+
+    </div>
+</div>
+<div id="container_big">
+    <img src="img/5.jpg" alt="">
+</div>
+<script>
+
+    var oContainer = document.getElementById('container');
+    var oBig = document.getElementById('big');
+    var oContainer_big = document.getElementById('container_big');
+    var oImg = container_big.getElementsByTagName('img');
+    oContainer.onmouseover = function () {
+            oBig.style.display = 'block';
+            oContainer_big.style.display = 'block';
+        oContainer.onmousemove = function (e) {
+
+            var oLeft = e.clientX - oBig.offsetWidth/2;
+            var oTop = e.clientY - oBig.offsetHeight/2;
+            if (oLeft > oContainer.offsetWidth - oBig.offsetWidth){
+                oLeft = oContainer.offsetWidth - oBig.offsetWidth;
+            }else if(oLeft<0){
+                oLeft = 0 ;
+            }
+            if (oTop > (oContainer.offsetHeight - oBig.offsetHeight)) {
+                oTop = oContainer.offsetHeight - oBig.offsetHeight;
+            }else if(oTop < 0){
+                oTop = 0 ;
+            }
+            oImg[0].style.width = oContainer_big.offsetHeight/(oBig.offsetHeight/oContainer.offsetHeight) + 'px';
+            oImg[0].style.height = oContainer_big.offsetWidth/(oBig.offsetWidth/oContainer.offsetWidth) + 'px';
+
+            var thanY =(oImg[0].offsetHeight - oContainer_big.offsetHeight) /(oContainer.offsetHeight - oBig.offsetHeight);
+            var thanX = (oImg[0].offsetWidth - oContainer_big.offsetWidth)/(oContainer.offsetWidth - oBig.offsetWidth);
+            oBig.style.left = oLeft +'px';
+            oBig.style.top = oTop +'px';
+            oImg[0].style.left = - oLeft * thanX +'px';
+            oImg[0].style.top = - oTop * thanY +'px';
+        }
+    }
+
+    oContainer.onmouseout = function () {
+        oBig.style.display = 'none';
+        oContainer_big.style.display = 'none';
+    }
+</script>
+</body>
+</html>

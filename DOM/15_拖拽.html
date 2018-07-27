@@ -41,9 +41,10 @@
             oDiv[0].style.left = divLeft + 'px';
             oDiv[0].style.top = divTop + 'px';
         }
-        oDiv[0].onmouseup = function () {
-            document.onmousemove = null;
-        }
+
+    }
+    document.onmouseup = function () {
+        document.onmousemove = null;
     }
 
 </script>
