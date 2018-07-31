@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div>
+        <button class="bigger">向上</button>
+        <button class="smaller">向下</button>
+    </div>
+    <div>
+        <textarea name="" id="comment" cols="20" rows="8">放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框</textarea>
+    </div>
+
+</div>
+<script src="../../jquery-1.12.4.js" type="text/javascript"></script>
+<script>
+    var oCmt = $('#comment');
+    $(function () {
+        $('.bigger').on('click',function () {
+            if (!oCmt.is(":animated")) {
+                oCmt.animate({scrollTop:'-=50'},400);
+            }
+        })
+        $('.smaller').on('click',function () {
+            if (!oCmt.is(":animated")) {
+                oCmt.animate({scrollTop:'+=50'},400);
+            }
+        })
+
+
+
+
+    })
+
+
+</script>
+</body>
+</html>

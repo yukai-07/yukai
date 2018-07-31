@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #border{
+            width: 400px;
+            background: #cccccc;
+            margin: 100px auto;
+            position: relative;
+            border-top: 1px solid black;
+        }
+        #menu{
+            position: absolute;
+            top: -29px;
+            left: -10px;
+        }
+        #menu li{
+            width: 114px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background: #cccccc;
+            color: white;
+            float: left;
+            margin-left: 10px;
+        }
+        #border div{
+            width: 400px;
+            height: 400px;
+            background: #cccccc;
+            color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #menu .selected{
+            background: black;
+        }
+        #border div{
+            display: none;
+        }
+        #border .index{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="border">
+    <ul id="menu">
+        <li class="selected">111</li>
+        <li>222</li>
+        <li>333</li>
+    </ul>
+    <div class="index">
+        aaa
+    </div>
+    <div>
+        bbb
+    </div>
+    <div>
+        ccc
+    </div>
+</div>
+<script src="jquery-1.12.4.js"></script>
+<script>
+
+
+    $('li').on('click',function () {
+        $(this).addClass('selected').siblings().removeClass('selected');
+        $('#border div').eq($(this).index()).addClass('index').siblings().removeClass('index');
+    })
+</script>
+</body>
+</html>

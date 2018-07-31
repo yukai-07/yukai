@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border: 0;
+            border-collapse: collapse;
+        }
+        td{
+            font:normal 12px/17px Arial;
+            padding:2px;
+            width:100px;
+        }
+        th{
+            font:bold 12px/17px Arial;
+            text-align:left;
+            padding:4px;
+            border-bottom:1px solid #333;
+        }
+        .selected{
+            background:#FF6500;
+            color:#fff;
+        }
+
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>暂住地</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            <input type="checkbox" name="choice">
+        </td>
+        <td>李狗冠1号</td>
+        <td>男</td>
+        <td>p城</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" name="choice">
+        </td>
+        <td>李狗冠2号</td>
+        <td>男</td>
+        <td>军事基地</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" name="choice">
+        </td>
+        <td>李狗冠3号</td>
+        <td>女</td>
+        <td>N港</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" name="choice">
+        </td>
+        <td>李狗冠4号</td>
+        <td>女</td>
+        <td>监狱</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" name="choice">
+        </td>
+        <td>李狗冠5号</td>
+        <td>女</td>
+        <td>G港</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="checkbox" name="choice">
+        </td>
+        <td>李狗冠6号</td>
+        <td>女</td>
+        <td>防空洞</td>
+    </tr>
+    </tbody>
+</table>
+<script src="../../jquery-1.12.4.js"></script>
+<script>
+
+    $('tbody tr').click(function () {
+        if ($(this).hasClass('selected')){
+            $(this).removeClass('selected').find('input').prop('checked',false);
+        } else{
+            $(this).addClass('selected').find('input').prop('checked',true);
+        }
+    })
+
+
+</script>
+
+
+
+</body>
+</html>

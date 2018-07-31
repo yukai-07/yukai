@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <div>
+            <button class="bigger">放大</button>
+            <button class="smaller">缩小</button>
+        </div>
+        <div>
+            <textarea name="" id="comment" cols="20" rows="8">放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框放大缩小文本框</textarea>
+        </div>
+
+    </div>
+    <script src="../../jquery-1.12.4.js" type="text/javascript"></script>
+    <script>
+        // var oCmt = $('#comment');
+        //放大缩小文本框
+        // $('.bigger').on('click',function () {
+        //     oCmt.height(oCmt.height()>500?oCmt.height():oCmt.height()+50);
+        // })
+        // $('.smaller').on('click',function () {
+        //     oCmt.height(oCmt.height()>50?oCmt.height()-50:oCmt.height());
+        // })
+        //
+        //放大缩小文本框加动画
+        $(function () {
+            var oCmt = $('#comment');//获取评论框
+            $('.bigger').on('click',function () {//放大按钮绑定单击事件
+                if (!oCmt.is(':animated')) {//判断是否处于动画
+                    if(oCmt.height()<500) {
+                        oCmt.animate({height:'+=50'},400);//重新设置高度，在原有的基础上加50
+                    }
+                }
+            })
+            $('.smaller').on('click',function () {
+                if (!oCmt.is(':animated')) {
+                    if(oCmt.height()>50) {
+                        oCmt.animate({height:'-=50'},400);
+                    }
+                }
+            })
+            
+            
+            
+            
+        })
+    </script>
+</body>
+</html>
