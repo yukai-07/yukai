@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person() {
+        this.name = '李狗冠';
+        // this.xx = {id:'李狗冠',age:12};
+    }
+    // Person.prototype.xx = {id:'李狗冠',age:12};
+    Person.prototype.say = function () {
+        console.log(this.name);
+    }
+
+    function Son(n) {
+        this.name = n;
+    }
+
+    Son.prototype = new Person();
+
+    var s = new Son('李狗冠11');
+
+    s.say();
+
+
+    // var p = new Person();
+    // p.say();
+    // p.xx.id = '李狗冠1号';
+    // p.say()
+    // var p1 = new Person();
+    // p1.say();
+</script>
+</body>
+</html>
