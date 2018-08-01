@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        #div1{
+            width: 100%;
+            padding-top:100%;
+            /*padding-top占父元素宽的百分比*/
+            background: #f00;
+        }
+        #div2{
+            width: 100vw;
+            height: 100vw;
+            /*占可见宽度的百分比*/
+            background: #0f0;
+        }
+        #div3{
+            width: 100%;
+            background: #00f;
+            overflow: hidden;
+        }
+        #div3:after{
+            content: '';
+            display: block;
+            margin-top: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+
+</div>
+<div id="div2">
+
+</div>
+<div id="div3">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*html{*/
+            /*font-size: 20px;*/
+        /*}*/
+        /*#div0{*/
+            /*font-size: 11px;*/
+        /*}*/
+        #div2{
+            width: 1rem;
+            height: 1rem;
+            background: #ff0000;
+        }
+    </style>
+</head>
+<body>
+<div id="div0">
+    <div id="div1">
+        <div id="div2">
+
+        </div>
+    </div>
+</div>
+<script>
+    document.body.onresize = function () {
+        var w = document.documentElement.clientWidth;
+        console.log(w);
+        document.documentElement.style.fontSize = w/5 +'px';
+    }
+    div2.onclick = function () {
+        var w = document.documentElement.clientWidth;
+        console.log(w);
+    }
+</script>
+</body>
+</html>
