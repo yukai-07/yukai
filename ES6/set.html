@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var set = new Set();
+    set.add(123);
+    set.add('123');
+    set.add('aaa');
+    set.add('bbb');
+    set.add([1,2,3]);
+    //set生成一个集合
+    // console.log(set.size);//size集合的长度
+
+    // set.delete('123');//删除字符串
+    // set.delete(123);//删除数字
+    // set.clear();//清除集合内容
+    // console.log(set);
+    // for (var k of set){//输出set中所有内容
+    //     console.log(k);
+    // }
+
+    // var keys = set.keys();//keys值默认等于values
+    // console.log(keys);
+    // var val = set.values();
+    // console.log(val);
+    // var entries = set.entries();//输出keys值和values值
+    // for (var ets of entries){
+    //     console.log(ets);
+    // }
+
+    //数组去重方法
+
+    //①
+    // var arr = [1,2,3,4,5,6,7,8,9,1,2,2,3,4,4,4,5,5,5,];
+    // var obj = {};
+    // var newArr = [];
+    // for(var i=0;i<arr.length;i++){
+    //     if (!obj[arr[i]]){//利用对象key值不能重复原理对数组进行去重
+    //         newArr.push(arr[i]);
+    //         obj[arr[i]] = true;
+    //     }
+    // }
+    // console.log(newArr);
+
+    //②
+    // var arr = [1,2,3,4,5,6,7,8,9,1,2,2,3,4,4,4,5,5,5,];
+    // var newArr = [];
+    // for (var i=0;i<arr.length;i++){
+    //     if(newArr.indexOf(arr[i]) == -1){
+    //         newArr.push(arr[i]);
+    //     }
+    // }
+    // console.log(newArr);
+
+    //③
+    var arr = [1,2,3,4,5,6,7,8,9,1,2,2,3,4,4,4,5,5,5,];
+    var set = new Set();
+    set.add(arr);
+    console.log(Array.from(set));
+</script>
+</body>
+</html>

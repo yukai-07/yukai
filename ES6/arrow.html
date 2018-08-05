@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>001</li>
+    <li>002</li>
+    <li>003</li>
+    <li>004</li>
+</ul>
+<script>
+    //箭头函数
+    // var aLi = document.getElementsByTagName('li');
+    // for(var i = 0;i<aLi.length;i++){
+    //     aLi[i].onclick = function () {
+    //         // var that = this;
+    //         setTimeout(()=> {
+    //             console.log(this.innerHTML);
+    //         },1000)
+    //
+    //     }
+    // }
+    //箭头函数里面的this是定义时指向
+    //普通函数里面的this是运行时指向
+    //①(箭头函数里没有this指向)
+
+    // var fn = (a,b)=>{
+    //     console.log(a,b);
+    // }
+    // fn(1,2);
+    //只有一个参数的时候可以省略小括号，只有一行代码的时候可以省略大括号
+
+
+    //②箭头函数没有arguments
+    // function fn() {
+    //     console.log(arguments[0]);
+    // }
+    // fn(1,2)
+    // var fn = ()=>{
+    //     console.log(arguments[0]);
+    // }
+    // fn(1);
+    
+    //③箭头函数没有构造函数constructor
+</script>
+</body>
+</html>

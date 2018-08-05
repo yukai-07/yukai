@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function fn(a,b) {
+        console.log(a,b);
+        console.log(this);
+    }
+    // fn(1,2);
+    var o = {
+        name:'zs'
+    }
+    // fn.call(o,1,2);//fn下面的方法，改变this指向->第一个参数,
+    // var arr = [1,2];
+    // fn.apply(o,arr);//fn下面的方法，改变this指向->第一个参数,第二个参数是数组
+
+    var f = fn.bind(o,1,2); //fn下面的方法，改变this指向->第一个参数,返回一个新函数
+    f();
+</script>
+</body>
+</html>

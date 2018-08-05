@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var arr = [1,undefined,3,[4,5]];
+    // var [a,b = 10,c,d] = arr;//数组里面的值为undefined时候
+    // console.log(a,b,c,d[0]);
+
+    // var arr = [1,2,3,[4,5]];
+    // var [a,,c,[d]] = arr;
+    // console.log(a,c,d);//输出1 3 4
+
+    //不定义新变量将a,b互换
+    // var a = 20,b = 10;
+    // a = a + b;
+    // b = a - b;
+    // a = a - b;
+    // console.log(a,b);
+
+    // [b,a] = [a,b];//解构分别赋值
+
+    // b = [a,a=b][0];
+    // console.log(a,b);
+    //
+    //
+    // var obj = {
+    //     a:1,
+    //     b:{
+    //         c:2
+    //     }
+    // }
+    // // var {a:x,b:y = 20} = obj;
+    //
+    // var {a:x,b:{c:y}} = obj;
+    //
+    // console.log(x,y);
+
+
+    // function fn([a = 3,b]) {
+    //     console.log(a,b);
+    // }
+    // fn([,1]);
+
+    function fn({a:x,b:y=3}) {
+        console.log(x,y);
+    }
+    fn({a:1,b:2});
+</script>
+</body>
+</html>
