@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var n = 'xxxxx';
+    // var str = 'my';
+    // var myName = 'ssss';
+
+
+    //对象属性的简写
+    // var obj = {
+    //     n,
+    //     age:12,
+    //     [str + 'Name']:11111
+    // }
+    // obj[str + 'Name'] = 'yyyyy';
+    // console.log(obj);
+
+    // var o1 = {
+    //     age:12,
+    //
+    // }
+    // var obj = {
+    //     a:1,
+    //     b:2
+    // }
+    //
+    // console.log(Object.assign(obj,{c:'aaa',d:'sss'}));
+    // obj.a.age = 15;
+    // console.log(obj,o1);
+
+    // console.log(+0 === -0);//类型和值不相等却返回true
+    // console.log(NaN === NaN);//返回false
+    //
+    // console.log(Object.is(+0,-0));//返回false
+    // console.log(Object.is(NaN,NaN));//返回true
+
+    var arr = [1,2,3,4,5,NaN,6,7];
+    Array.prototype.io = function (N) {
+        for (var i=0;i<this.length;i++){
+            if (Object.is(N,this[i])){
+                return i;
+            }
+        }
+        return -1;
+    }
+    console.log(arr.io(NaN));
+</script>
+</body>
+</html>
