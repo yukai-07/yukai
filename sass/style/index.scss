@@ -2,6 +2,7 @@
 $color:#f00;
 $bg:background;
 $test:test;
+@import '_commen';
 #div1{
   background: #000;
   color: $color;
@@ -35,4 +36,70 @@ $test:test;
 }
 ##{$test}{
   #{$bg}:url("");
+
+}
+@mixin xxx($size,$color:color){
+  width: $size;
+  height: $size;
+  background: $color;
+}
+#div4{
+  @include xxx(200px,red);
+}
+#div5{
+  @include xxx($color:#000,$size:300px)
+}
+#div6{
+  @extend #div5;
+  color: #000;
+}
+#div7{
+  color:lighten($color,20%);/*颜色更浅*/
+  color:darken($color,20%);/*颜色更深*/
+  background: opacify($color,.3);/*更不透明*/
+  background: transparentize($color,.3);/*更透明*/
+}
+/* rgb() rgba()
+lighten($color, 20%)
+darken($color, 20%)
+opacify($color, 0.3);
+transparentize($color, 0.3*/
+$m: (light: #000, dark: #fff);
+#div8{
+  color:map-get($m, light);
+  border:map-values($m);
+
+}
+@for $i from 1 to 5{
+  .cl-#{$i}{
+    width: $i+px;
+  }
+}
+$list:success,fail,warn;
+
+@each $var in $list{
+  .#{$var}{
+    background: icon-$var;
+  }
+}
+$i:5;
+@while $i>2{
+  .div1{
+    width: 100px;
+  }
+  $i : $i - 2;
+}
+
+@function xxx($num){
+  @if($num > 10){
+    @return $num - 10;
+  }@else if($num > 5){
+    @return $num - 5;
+  }@else{
+    @return $num - 1;
+  }
+}
+
+#div10{
+  width: xxx(4)+px;
 }

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #app{
+            width: 400px;
+            margin: 0 auto;
+        }
+        h1{
+            text-align: center;
+        }
+
+        li{
+            list-style: none;
+            height: 50px;
+            margin-bottom:10px ;
+            background: green;
+            line-height: 50px;
+            padding: 0 20px;
+        }
+        span{
+            float: right;
+        }
+        .red{
+            background: red;
+        }
+        .green{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1>services</h1>
+    <ul>
+        <li v-for="(obj,index) in arr" :class="obj.classObj" @click="changeRed(obj)">
+            {{obj.name}}  <span>{{obj.num}}</span>
+        </li>
+    </ul>
+    <hr>
+    <!--total: <span>{{total}} </span>-->
+    total: <span>{{total}} </span>
+</div></div>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            arr:[{name:'aaa',num:234,classObj:{red:false}},
+                {name:'bbb',num:111,classObj:{red:false}},
+                {name:'ccc',num:247,classObj:{red:false}},
+                {name:'ddd',num:346,classObj:{red:false}},
+                {name:'eee',num:532,classObj:{red:false}},],
+            // total:0
+
+        },
+
+        methods:{
+            // changeRed(index){
+            //     this.arr[index].classObj.red = !this.arr[index].classObj.red;
+            //     if(this.arr[index].classObj.red){
+            //         this.total+=this.arr[index].num;
+            //     }else{
+            //         this.total-=this.arr[index].num;
+            //     }
+            // }
+
+
+            changeRed(obj){
+                    obj.classObj.red = !obj.classObj.red;
+            //         if (obj.classObj.red) {
+            //             this.total += obj.num;
+            //         }else{
+            //             this.total -= obj.num;
+            //         }
+            }
+
+        },
+        computed:{
+            total(){
+                let num = 0;
+                this.arr.forEach(function (elem,index) {
+                    if(elem.classObj.red){
+                        num+=elem.num;
+                    }
+                });
+                return num;
+            }
+        }
+    })
+</script>
+</body>
+</html>

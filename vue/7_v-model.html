@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #div1{
+        width: 200px;
+        height: 200px;
+        background: #ff0000;
+    }
+    #div2{
+        width: 400px;
+        height: 400px;
+        background: #00ff00;
+    }
+</style>
+<body>
+<div id="app">
+    <input type="text" @keyup="fun" v-model="val">
+    {{msg}}
+</div>
+
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            msg:0,
+            val:''
+        },
+        methods:{
+            fun(){
+                if(event.keyCode==13){//获取键盘值
+                    // this.msg+=parseInt(this.val);//转换成数字
+                    // this.msg+=this.val*1;//转换成数字
+                    this.msg+=Number(this.val);//转换成数字
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

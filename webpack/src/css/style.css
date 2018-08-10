@@ -1,0 +1,19 @@
+#div1{
+    width: 200px;
+    height: 400px;
+    /*background: #ff0000;*/
+    background-image: url("../img/1.jpg");
+}
+#div2{
+    height: 100px;
+}
+#div4{
+    transform: translateX(30gd);
+    flex:1;
+}
+#success{
+
+}
+@keyframes xxx {
+
+}

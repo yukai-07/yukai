@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <ul>
+        <li v-for="val in arr">
+            {{val}}
+        </li>
+        <li v-for="(val,index) in arr">
+            {{val}}--{{index}}
+        </li>
+        <li v-for="(val,index) in 3">
+            {{val}},{{index}}
+        </li>
+        <li v-for="val in sortstu">
+            姓名:{{val.name}},年龄:{{val.age}}
+        </li>
+        <li v-for="(val,key,index) in obj">
+            {{key}}:{{val}}--{{index}}
+        </li>
+    </ul>
+    {{arr.length}}
+    {{obj.size}}
+
+</div>
+<script src="vue.js"></script>
+<script>
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            arr:[1,2,3,4],
+            stuList:[{
+                name:'李狗冠1号',
+                age:38
+            },{
+                name:'李狗冠2号',
+                age:12
+            },{
+                name:'李狗冠3号',
+                age:108
+            }],
+            obj:{
+                a:1,
+                b:2,
+                c:3
+            }
+        },
+        computed:{
+            sortstu(){
+                return this.stuList.sort(function (a,b) {
+                    return a.age - b.age;
+                })
+            }
+        }
+
+
+    })
+
+</script>
+
+
+</body>
+</html>

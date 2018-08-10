@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <div v-if="msg"><!--增删代码-->
+        <p>李狗冠1号</p>
+        <span>李狗冠2号</span>
+        <h1>李狗冠3号</h1>
+    </div>
+    <div v-else="">
+        李狗冠恶心
+    </div>
+    <template v-if="xx == 'A'">
+        <p>李狗冠4号</p>
+        <span>李狗冠5号</span>
+        <h1>李狗冠6号</h1>
+    </template>
+
+    <div v-show="aaa == 4"><!--更改style的display,频繁切换时更快-->
+        <p>李狗冠7号</p>
+        <span>李狗冠8号</span>
+        <h1>李狗冠9号</h1>
+    </div>
+
+
+</div>
+<script src="vue.js"></script>
+<script>
+     var vm = new Vue({
+         el:'#app',
+         data:{
+             msg:false,
+             xx:'A',
+             aaa:4
+         }
+     })
+</script>
+</body>
+</html>
