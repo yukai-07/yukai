@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="xx in arr">
+            {{xx}}
+        </li>
+    </ul>
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            arr:[1,2,3,4,5]
+        }
+
+    });
+    Vue.set(vm.arr,0)
+    //arr.length不能更改视图效果,arr.splice(1,2,3)可以,vm.set()可以
+    // arr.splice(1,2,3,4),第二个元素加后面，共两个元素，删除掉，替换成3,4
+    //Vue.set(vm.arr,0,3),要修改的数组，索引，要修改成的值
+
+
+</script>
+</body>
+</html>

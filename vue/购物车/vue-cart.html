@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <button>添加商品</button>
+    <table id="tbl">
+        <thead>
+        <tr>
+            <th></th>
+            <th>商品信息</th>
+            <th>商品金额</th>
+            <th>商品数量</th>
+            <th>总金额</th>
+            <th>编辑</th>
+        </tr>
+        </thead>
+        <tbody id="product-list">
+        <tr v-for="(obj,index) in menuList">
+            <td><input type="checkbox" v-model="checkList" :value="obj"></td>
+            <td>{{obj.name}}</td>
+            <td class="price">{{obj.price}}</td>
+            <td>
+                <button class="sub" @click="sub(obj)">-</button>
+                <input type="text" v-model="obj.number">
+                <button class="add" @click="add(obj)">+</button>
+            </td>
+            <td class="total-price">{{obj.price * obj.number}}</td>
+            <td><a href="javascript:" @click="del(index,obj)">删除</a></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="6"></td>
+            <td>
+                总计：<span>{{total()}}</span></td>
+            <td>
+                <button>结账</button>
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+<script src="../vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            checkList:[],
+            menuList:[
+                {name:'黄鹤楼',price:19,number:0},
+                {name:'加多宝',price:8,number:0}
+                ]
+        },
+        methods:{
+            sub(obj){
+                if (obj.number <= 0){
+                   obj.number = 0;
+                } else{
+                    obj.number--;
+                }
+
+            },
+            add(obj){
+                obj.number++
+            },
+            total(){
+                let num = 0;
+                this.checkList.forEach((elem) =>{
+                    num += (elem.price * elem.number);
+                });
+                return num;
+            },
+            del(index,obj){
+                this.menuList.splice(index,1);
+                this.checkList.splice(this.checkList.indexOf(obj),1);
+            }
+
+
+        }
+    })
+</script>
+</body>
+</html>
