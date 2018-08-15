@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #dialog-box{
+            margin: 100px auto;
+            width: 400px;
+            height: 300px;
+            background: #cccccc;
+        }
+        .dialog-title{
+            background: pink;
+            height: 40px;
+            line-height: 40px;
+        }
+        .close{
+            float: right;
+        }
+        .content{
+            margin: 100px 0;
+
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="login">登录</button>
+    <button @click="reg">注册</button>
+    <my-dialog tital="登录" v-show="isShow" @close="close1">
+        用户名: <input type="text">
+        <br>
+        密码是: <input type="text">
+        <br>
+        <input type="submit">
+    </my-dialog>
+    <my-dialog tital="注册" v-show="isShow1" @close="close2">
+        用户名: <input type="text">
+        <br>
+        密码是: <input type="text">
+        <br>
+        邮箱是: <input type="text">
+        <br>
+        <input type="submit">
+        <input type="reset">
+    </my-dialog>
+
+</div>
+<script type="text/x-template" id="temp">
+    <div id="dialog-box">
+        <div class="dialog-title">
+            <span class="title-name">{{tital}}</span>
+            <span class="close" @click="$emit('close')">[X]</span>
+        </div>
+        <div class="content">
+            <slot>
+                用户名: <input type="text">
+                <br>
+                密码是: <input type="text">
+                <br>
+                <input type="submit">
+            </slot>
+
+        </div>
+    </div>
+</script>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            isShow:false,
+            isShow1:false
+        },
+        components:{
+            'my-dialog':{
+                template: '#temp',
+                props:['tital']
+            },
+        },
+        methods:{
+            login(){
+                this.isShow=true;
+                this.isShow1=false
+            },
+            reg(){
+                this.isShow1=true;
+                this.isShow=false
+            },
+            close1(){
+                this.isShow=false;
+            },
+            close2(){
+                this.isShow1=false;
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
