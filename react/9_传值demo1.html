@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+    <script src="browser.min.js"></script> <!--转ES6-->
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script type="text/babel">
+        class Contain extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    num1:100
+                }
+            }
+            change(){
+                // if(this.state.num1<0){
+                //     this.setState({
+                //         num1:0
+                //     })
+                // }
+                this.setState({
+                    num1:this.state.num1-=10
+                })
+            }
+            render(){
+                return (
+                    <div>
+                        全部士兵数量:{this.state.num1}
+                        <A myClick={this.change.bind(this)}></A>
+                        <B myClick={this.change.bind(this)}></B>
+                    </div>
+                )
+            }
+        }
+
+
+        class A extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    numA:100
+                }
+            }
+            add(){
+                console.log(111);
+                this.setState({
+                    numA:this.state.numA+=10
+                });
+            }
+            render(){
+                return (
+                    <div>
+                        将军a有士兵:{this.state.numA}
+                        <br/>
+                        <div
+                            onClick={this.props.myClick}
+                        >
+                            <button onClick={this.add.bind(this)}>调兵</button>
+                        </div>
+
+                    </div>
+                )
+            }
+        }
+
+
+        class B extends React.Component{
+            constructor(props){
+                super(props);
+                this.state = {
+                    numB:100
+                }
+            }
+            add(){
+                console.log(111)
+                this.setState({
+                    numA:this.state.numB+=10
+                })
+            }
+            render(){
+                return (
+                    <div>
+                        将军b有士兵:{this.state.numB}
+                        <br/>
+                        <div
+                            onClick={this.props.myClick}
+                        >
+                            <button onClick={this.add.bind(this)}>调兵</button>
+                        </div>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(
+            <Contain></Contain>,
+            document.getElementById('root')
+        )
+    </script>
+</body>
+</html>

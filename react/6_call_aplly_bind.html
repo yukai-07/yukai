@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1">
+        aaa
+    </div>
+    <script src="react-dom.development.js"></script>
+    <script src="react.development.js"></script>
+    <script src="browser.min.js"></script>
+    <script>
+        var obj = {
+            name:'zhangsan'
+        }
+        function a(){
+            console.log(this,name,age)
+        }
+        a.call(obj);//a下面的方法,改变this指向->第一个参数,
+        a.apply(obj);//a下面的方法,改变this指向->第一个参数,第二个参数是数组
+        var fn = a.bind(obj);//a下面的方法,改变this指向->第一个参数,返回一个新函数
+        fn();
+    </script>
+</body>
+</html>

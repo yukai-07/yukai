@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+
+</div>
+<script src="browser.min.js"></script> <!--转ES6-->
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script type="text/babel">
+   class Welcome extends React.Component{
+       constructor(props){
+           super(props);
+           this.state = {
+               count:0
+           }
+       }
+       render(){
+           return (
+               <div>
+                   <button onClick={(event)=>{this.add(event)}}>click</button>
+
+               </div>
+           )
+       }
+
+   }
+   ReactDOM.render(
+       <Welcome name="唯创">666</Welcome>,
+       document.getElementById()
+   )
+
+
+</script>
+</body>
+</html>
