@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li{
+            list-style: none;
+        }
+        .title{
+            text-align: center;
+        }
+        .contain{
+            margin-left: 300px;
+        }
+        .xx{
+            height: 32px;
+            width: 300px;
+            margin-left: 40px;
+        }
+        .saveButton{
+            height: 32px;
+            width: 80px;
+            background: pink;
+            margin-top: 10px;
+        }
+        .studyList li{
+            width: 340px;
+            line-height: 32px;
+            height: 32px;
+            background: yellow;
+
+        }
+        .studyList input{
+
+        }
+        .delete{
+            float: right;
+        }
+        .studyList .selected{
+            background: red;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+
+</div>
+<script src="browser.min.js"></script> <!--转ES6-->
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script type="text/babel">
+    class Main extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+
+            }
+        }
+        render(){
+            return (
+                <div className="contain">
+                    <h1 className="title">todoList</h1>
+                    <Save></Save>
+
+                </div>
+            )
+        }
+    }
+    class Save extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {
+                msg:'安排新的任务..',
+                list:[
+                    {name:'吃饭',checked:false},
+                    {name:'睡觉',checked:false},
+                    {name:'打豆豆',checked:false},
+                ]
+            }
+        }
+        choose(e){
+            console.log(111);
+            e.target.value = '';
+            // this.setState({
+            //     msg:null
+            // })
+        }
+        changeValue(e){
+            this.setState({
+                msg:e.target.value
+            })
+        }
+        save(){
+            console.log(this.state.msg);
+            let arr = this.state.list;
+            let flag = 0;
+            for (let i=0 ;i<arr.length;i++){
+                if(this.state.msg == arr[i].name){
+                    flag = 1;
+                }
+            }
+            if(flag == 1){
+                alert("您输入的内容与列表中的一项重复");
+            }else{
+                arr.push({name:this.state.msg,checked:false});
+                this.setState({
+                    list:arr
+                });
+            }
+
+            // this.state.list.push({name:this.state.msg});
+            console.log(this.state.list)
+        }
+        render(){
+            return (
+                <div className="saveTitle">
+                    <span>任务: </span>
+                    <input
+                            className="xx"
+                    type="text"
+                    defaultValue={this.state.msg}
+                    onClick={this.choose.bind(this)}
+                    onKeyUp={this.changeValue.bind(this)}
+                />
+                    <br/>
+                    <button className="saveButton" onClick={this.save.bind(this)}>保存</button>
+                    <List list={this.state.list}></List>
+                </div>
+            )
+        }
+    }
+    class List extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                list:this.props.list,
+                sum:0
+            }
+        }
+        del(index){
+            console.log(index);
+            let arr = this.state.list;
+            let xx = arr.length;
+            for(let i = 0;i<this.state.list.length;i++){
+                if(!this.state.list[i].checked){
+                    xx--
+                }
+            }
+            arr.splice(index,1);
+            console.log(arr);
+            this.setState({
+                list:arr,
+                sum:xx
+            })
+        }
+        sub(index){
+            let xx = 0;
+            // var arr = this.state.list;
+            this.state.list[index].checked = !this.state.list[index].checked;
+            for(let i = 0;i<this.state.list.length;i++){
+                if(this.state.list[i].checked){
+                    xx++
+                }
+            }
+            this.setState({
+                sum:xx
+            })
+        }
+        render(){
+            return (
+                <div>
+                    <ul className="studyList">
+                        {
+                            this.state.list.map((ele,index)=>{
+                                return <li key={ele.name} className={this.state.list[index].checked ? 'selected':''}>
+                                    <input type="checkbox" onClick={this.sub.bind(this,index)}/>
+                                    {ele.name}
+                                    <button
+                                        className="delete"
+                                        onClick={this.del.bind(this,index)}
+                                    >删除</button>
+                                    </li>
+                            })
+                        }
+                        <li>{this.state.sum}已完成/{this.state.list.length}全部</li>
+                    </ul>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(
+        <Main></Main>,
+        document.getElementById('root')
+    )
+</script>
+</body>
+</html>
