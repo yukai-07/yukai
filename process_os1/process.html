@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li{
+            list-style: none;
+        }
+        #container{
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+        .left{
+            margin: 0 auto;
+            height: 200px;
+
+        }
+        .button{
+            padding: 0;
+            color: #000;
+        }
+        .button li{
+            background: red;
+            width: 200px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+
+            cursor: pointer;
+        }
+        .show{
+            margin-top:33px ;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div class="left">
+        <input type="text"  v-model="str">
+        <ul class="button">
+            <li @click="create()">创建进程</li>
+            <li @click="time()">时间片到</li>
+            <li @click="block()">阻塞进程</li>
+            <li @click="wakeup()">唤醒进程</li>
+            <li @click="over()">结束进程</li>
+        </ul>
+    </div>
+    <div class="right">
+        <ul class="show">
+            就绪状态:<span v-for="rdy in ready">{{rdy}} </span>
+            <li class="implement">执行状态:{{implement}}</li>
+            阻塞状态:<span v-for="xx in blk">{{xx}} </span>
+        </ul>
+    </div>
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#container',
+        data:{
+            str:[],
+            implement:'没有正在执行的进程',//执行状态
+            ready:[],
+            blk:[],
+            data:''
+        },
+        methods:{
+            create(){
+                console.log(this.str);
+                if(this.implement == '没有正在执行的进程'){
+                    this.implement = this.str[0];
+                }else{
+                    this.ready.push(parseInt(this.str[0]));
+                }
+            },
+            time(){
+                if(this.implement=='没有正在执行的进程'||this.implement==null){
+                    alert('不能进行')
+                }else{
+                    this.ready.push(parseInt(this.implement));
+                    this.implement = this.ready[0];
+                    this.ready.splice(0,1);
+                }
+            },
+            block(){
+                if(this.implement=='没有正在执行的进程'){
+                    alert('没有可以阻塞的进程')
+                }else{
+                    this.blk.push(parseInt(this.implement));
+                    this.implement = this.ready[0];
+                    this.ready.splice(0,1);
+                    if(this.implement==null){
+                        this.implement ='没有正在执行的进程';
+                    }
+                }
+            },
+            wakeup(){
+                if(this.blk[0] ==null){
+                    alert('没有需要唤醒的进程')
+                }else{
+                    this.ready.push(this.blk[this.blk.length-1]);
+                    this.blk.splice(this.blk.length-1,1);
+                }
+            },
+            over(){
+               var num = prompt('请输入需要结束的进程');
+               if(this.implement == num){
+                   this.implement = '没有正在执行的进程';
+               }else{
+                   this.ready.map((elem,index)=>{
+                       if(elem == num){
+                           this.ready.splice(index,1);
+                       }
+                   });
+                   this.blk.map((elem,index)=>{
+                       if(elem == num){
+                           this.blk.splice(index,1);
+                       }
+                   })
+               }
+            },
+        }
+    })
+</script>
+</body>
+</html>

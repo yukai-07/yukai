@@ -921,7 +921,7 @@ function isValidElement(object) {
 var ReactDebugCurrentFrame = {};
 
 {
-  // Component that is being worked on
+  // Components that is being worked on
   ReactDebugCurrentFrame.getCurrentStack = null;
 
   ReactDebugCurrentFrame.getStackAddendum = function () {
@@ -1628,7 +1628,7 @@ function validatePropTypes(element) {
     currentlyValidatingElement = null;
   } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
     propTypesMisspellWarningShown = true;
-    warning_1(false, 'Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', name || 'Unknown');
+    warning_1(false, 'Components %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', name || 'Unknown');
   }
   if (typeof type.getDefaultProps === 'function') {
     !type.getDefaultProps.isReactClassApproved ? warning_1(false, 'getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.') : void 0;

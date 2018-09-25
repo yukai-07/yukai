@@ -48,6 +48,9 @@ export default{
             }
         }
     },
+    destroyed(){
+      window.onscroll = null;
+    },
 
     components:{
         MovieList

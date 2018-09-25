@@ -1,6 +1,6 @@
 <template>
     <div class="music">
-        <aplayer autoplay :music="musicList[0]" :list="musicList" v-if="isShow"></aplayer>
+        <aplayer autoplay :showLrc="true" :music="musicList[0]" :list="musicList" v-if="isShow"></aplayer>
     </div>
 </template>
 <script>
@@ -23,7 +23,7 @@ export default {
                    obj.src = elem.src;
                    obj.artist = elem.author;
                    obj.pic = elem.musicImgSrc;
-                   obj.lrc = elem.lrc;
+                   obj.lrc = 'http://localhost:8081/'+elem.lrc;
                    this.musicList.push(obj)
                });
                 this.isShow = true;
@@ -35,6 +35,6 @@ export default {
     }
 }
 </script>
-<style>
+<style lang="scss">
 
 </style>

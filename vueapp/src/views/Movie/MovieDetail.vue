@@ -16,13 +16,15 @@ export default{
         }
     },
     created(){
+        window.onscroll = ()=>{};
         var movieId = this.$route.params.id;
         Axios.get('https://bird.ioliu.cn/v1?url=https://api.douban.com/v2/movie/subject/'+movieId)
             .then((res)=>{
                 this.movieDetail =  res.data;
                 this.show = true;
         })
-    }
+    },
+
 }
 </script>
 <style>

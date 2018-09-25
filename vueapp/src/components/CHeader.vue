@@ -19,6 +19,7 @@
         color: #fff;
         line-height: 1rem;
         background:rgb(33, 150, 243);
+        z-index: 1;
     }
     .header-title{
          position: absolute;

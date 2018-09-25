@@ -10113,7 +10113,7 @@ var hasBadMapPolyfill = void 0;
   }
 }
 
-// A Fiber is work on a Component that needs to be done or was done. There can
+// A Fiber is work on a Components that needs to be done or was done. There can
 // be more than one per component.
 
 
@@ -11964,7 +11964,7 @@ function checkClassInstance(workInProgress) {
     var noComponentShouldUpdate = typeof instance.componentShouldUpdate !== 'function';
     !noComponentShouldUpdate ? warning_1(false, '%s has a method called ' + 'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' + 'The name is phrased as a question because the function is ' + 'expected to return a value.', name) : void 0;
     if (type.prototype && type.prototype.isPureReactComponent && typeof instance.shouldComponentUpdate !== 'undefined') {
-      warning_1(false, '%s has a method called shouldComponentUpdate(). ' + 'shouldComponentUpdate should not be used when extending React.PureComponent. ' + 'Please extend React.Component if shouldComponentUpdate is used.', getComponentName(workInProgress) || 'A pure component');
+      warning_1(false, '%s has a method called shouldComponentUpdate(). ' + 'shouldComponentUpdate should not be used when extending React.PureComponent. ' + 'Please extend React.Components if shouldComponentUpdate is used.', getComponentName(workInProgress) || 'A pure component');
     }
     var noComponentDidUnmount = typeof instance.componentDidUnmount !== 'function';
     !noComponentDidUnmount ? warning_1(false, '%s has a method called ' + 'componentDidUnmount(). But there is no such lifecycle method. ' + 'Did you mean componentWillUnmount()?', name) : void 0;
@@ -12408,7 +12408,7 @@ var warnForMissingKey = function (child) {};
     if (!child._store || child._store.validated || child.key != null) {
       return;
     }
-    !(typeof child._store === 'object') ? invariant_1(false, 'React Component in warnForMissingKey should have a _store. This error is likely caused by a bug in React. Please file an issue.') : void 0;
+    !(typeof child._store === 'object') ? invariant_1(false, 'React Components in warnForMissingKey should have a _store. This error is likely caused by a bug in React. Please file an issue.') : void 0;
     child._store.validated = true;
 
     var currentComponentErrorInfo = 'Each child in an array or iterator should have a unique ' + '"key" prop. See https://fb.me/react-warning-keys for ' + 'more information.' + (getCurrentFiberStackAddendum$7() || '');
@@ -12479,14 +12479,14 @@ function throwOnInvalidObjectType(returnFiber, newChild) {
 }
 
 function warnOnFunctionType() {
-  var currentComponentErrorInfo = 'Functions are not valid as a React child. This may happen if ' + 'you return a Component instead of <Component /> from render. ' + 'Or maybe you meant to call this function rather than return it.' + (getCurrentFiberStackAddendum$7() || '');
+  var currentComponentErrorInfo = 'Functions are not valid as a React child. This may happen if ' + 'you return a Components instead of <Components /> from render. ' + 'Or maybe you meant to call this function rather than return it.' + (getCurrentFiberStackAddendum$7() || '');
 
   if (ownerHasFunctionTypeWarning[currentComponentErrorInfo]) {
     return;
   }
   ownerHasFunctionTypeWarning[currentComponentErrorInfo] = true;
 
-  warning_1(false, 'Functions are not valid as a React child. This may happen if ' + 'you return a Component instead of <Component /> from render. ' + 'Or maybe you meant to call this function rather than return it.%s', getCurrentFiberStackAddendum$7() || '');
+  warning_1(false, 'Functions are not valid as a React child. This may happen if ' + 'you return a Components instead of <Components /> from render. ' + 'Or maybe you meant to call this function rather than return it.%s', getCurrentFiberStackAddendum$7() || '');
 }
 
 // This wrapper function exists because I expect to clone the code in each path
@@ -13946,7 +13946,7 @@ function mountIndeterminateComponent(current, workInProgress, renderExpirationTi
       var componentName = getComponentName(workInProgress) || 'Unknown';
 
       if (!didWarnAboutBadClass[componentName]) {
-        warning_1(false, "The <%s /> component appears to have a render method, but doesn't extend React.Component. " + 'This is likely to cause errors. Change %s to extend React.Component instead.', componentName, componentName);
+        warning_1(false, "The <%s /> component appears to have a render method, but doesn't extend React.Component. " + 'This is likely to cause errors. Change %s to extend React.Components instead.', componentName, componentName);
         didWarnAboutBadClass[componentName] = true;
       }
     }
@@ -17896,7 +17896,7 @@ var ReactDOM = {
     return legacyRenderSubtreeIntoContainer(null, element, container, false, callback);
   },
   unstable_renderSubtreeIntoContainer: function (parentComponent, element, containerNode, callback) {
-    !(parentComponent != null && has(parentComponent)) ? invariant_1(false, 'parentComponent must be a valid React Component') : void 0;
+    !(parentComponent != null && has(parentComponent)) ? invariant_1(false, 'parentComponent must be a valid React Components') : void 0;
     return legacyRenderSubtreeIntoContainer(parentComponent, element, containerNode, false, callback);
   },
   unmountComponentAtNode: function (container) {

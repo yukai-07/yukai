@@ -1,0 +1,15 @@
+.pro-container{
+    display: flex;
+    margin-bottom: .5rem;
+}
+.pro-img{
+    width:1.5rem;
+    height:1.5rem;
+    margin-right:0.2rem;
+}
+.pro-content{
+    flex:1;
+}
+.pro-sold{
+    float: right;
+}
