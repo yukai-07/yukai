@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li{
+            list-style: none;
+        }
+        #container{
+            width: 600px;
+            height: 800px;
+            border: 1px solid black;
+            margin: 0 auto;
+        }
+        .left{
+            margin: 0 auto;
+
+        }
+        .button{
+            padding: 0;
+            color: #000;
+        }
+        .button li{
+            background: red;
+            width: 200px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+
+            cursor: pointer;
+        }
+
+        .right{
+            height: 65px;
+        }
+
+        /*.border_1{*/
+        /*height: 32px;*/
+        /*border: 1px solid black;*/
+        /*}*/
+        /*.border_2{*/
+        /*border-top: 0;*/
+        /*}*/
+        .bottom{
+            margin-top: 10px;
+            border-top: 1px solid #000000;
+        }
+        .page{
+            margin-top: 4px;
+            width: 200px;
+            height: 200px;
+            /*background: #000;*/
+            float: left;
+        }
+        .page h3{
+            text-align: center;
+            margin: 0;
+        }
+        .diagram{
+            margin-top: 4px;
+            width: 160px;
+            /*background: red;*/
+            float: left;
+            border: 1px solid #000000;
+        }
+        .diagram h3{
+            text-align: center;
+            border-bottom: 1px solid #000000;
+            margin: 0;
+        }
+        .diagram p{
+            width: 20px;
+            float: left;
+            margin: 0;
+            text-align: center;
+        }
+        .exchange{
+            margin-top: 4px;
+            margin-left: 20px;
+            width: 160px;
+            /*background: green;*/
+            float: left;
+            border: 1px solid #000000;
+        }
+        .exchange h3{
+            text-align: center;
+            border-bottom: 1px solid #000000;
+            margin: 0;
+        }
+        .exchange p{
+            width: 20px;
+            float: left;
+            margin: 0;
+            text-align: center;
+        }
+
+        .page div{
+            float: left;
+            text-align: left;
+            margin-left: 5px;
+        }
+        .page div p{
+            margin: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+
+    <div class="left">
+        进程名:<input type="text" v-model="str">
+        进程大小:<input type="text"  v-model="process">
+        <ul class="button">
+            <li @click="create()">创建进程</li>
+            <li @click="time()">时间片到</li>
+            <li @click="block()">阻塞进程</li>
+            <li @click="wakeup()">唤醒进程</li>
+            <li @click="over()">结束进程</li>
+
+        </ul>
+    </div>
+    <div class="right">
+        <ul class="show">
+            <li>
+                就绪状态:<span v-for="val in ready">{{val.name}} size:{{val.size}}, </span>
+
+            </li>
+            <li>
+                执行状态:<span v-for="val in running">{{val.name}} size:{{val.size}},</span>
+
+            </li>
+            <li>
+                阻塞状态:<span v-for="val in blk">{{val.name}} size:{{val.size}},</span>
+            </li>
+        </ul>
+    </div>
+    <div class="bottom">
+        <div class="page">
+            <h3>页表</h3>
+            <div>
+                页号
+                <p v-for="pgn in pagenum">{{pgn}}</p>
+            </div>
+            <div>
+                块号
+                <p v-for="kn in knum">{{kn}}</p>
+            </div>
+            <div>
+                交换空间
+                <p v-for="cgs in changespace">{{cgs}}</p>
+            </div>
+            <div>
+                存在位
+                <p v-for="c in cun">{{c}}</p>
+            </div>
+            <div>
+                <input type="text" v-model="processage">
+                <button @click="FIFO()">change</button>
+                <p>{{this.queye_2}}/{{this.queye_1}}</p>
+            </div>
+
+        </div>
+        <div class="diagram">
+            <h3>位示图</h3>
+            <p v-for="xx in dgm">{{ xx }} </p>
+        </div>
+        <div class="exchange">
+            <h3>交换空间</h3>
+            <p v-for="xx in ehg">{{ xx }} </p>
+        </div>
+    </div>
+</div>
+<script src="vue.js"></script>
+<script>
+    class PCB {
+        constructor(name,size){
+            this.name = name;
+            this.size = size;
+        }
+    }
+    class page {
+        constructor(pagenum,knum,changespace,cun){
+            this.pagenum = pagenum;
+            this.knum = knum;
+            this.changespace = changespace;
+            this.cun = cun;
+        }
+    }
+    var vm = new Vue({
+        el:'#container',
+        data:{
+            process:'',
+            str:'',
+            processage:'',
+            implement:{
+                name:'没有正在执行的进程',
+                size:[],
+            },//执行状态
+            running:[],//执行
+            ready:[],//就绪
+            blk:[],//阻塞
+            dgm:[],//位示图
+            ehg:[],//交换空间
+            pagenum:[],//页号
+            knum:[],//块号
+            changespace:[],//交换空间
+            cun:[],//存在位
+            pagetable:[],//页表
+            queye_1:0,
+            queye_2:0,
+
+
+
+        },
+        created:function (){
+
+            //生成随机内存
+            for (var i = 0;i < 64;i++) {
+                var num = parseInt(Math.ceil(Math.random()*1-0.5));
+                this.dgm.push(num);
+            }
+            //生成随机交换空间
+            for (var i = 0;i < 128;i++) {
+                var num = parseInt(Math.ceil(Math.random()*1-0.5));
+                this.ehg.push(num);
+            }
+
+        },
+        methods:{
+            //先进先出
+            FIFO(){
+                console.log(this.processage);
+
+                var n = Math.floor(parseInt(this.processage)/1024);
+                var m = parseInt(this.processage);
+                var temp = 0;
+                var i = 0;
+                var sum = 0;
+                if(this.processage==''){
+
+                }else {
+                    for (var j = 3; j < this.pagenum.length; j++) {
+                        if (this.pagenum[j] != n) {
+                            sum = sum+1;
+                            j = this.pagenum.length;
+                            console.log(sum++)
+                        } else {
+                            while (i < 3) {
+                                this.pagenum.map((elem, index) => {
+                                    if (elem == n) {
+                                        n = index;
+                                    }
+                                });
+                                var tempOption = this.pagenum[0];
+                                this.$set(this.pagenum, 0, this.pagenum[n]);
+                                this.$set(this.pagenum, n, tempOption);
+                                this.queye_2 = this.queye_2 + 1;
+                                sum = sum + 2;
+                                temp = this.pagenum[0];
+                                this.pagenum.splice(0, 1, this.pagenum[1]);
+                                this.pagenum.splice(1, 1, this.pagenum[2]);
+                                this.pagenum.splice(2, 1, temp);
+                                var tem = 0;
+                                tem = this.knum[0];
+                                this.knum.splice(0, 1, this.knum[1]);
+                                this.knum.splice(1, 1, this.knum[2]);
+                                this.knum.splice(2, 1, tem);
+                                i = 3;
+                                j = this.pagenum.length;
+
+                            }
+                        }
+                    }
+                    console.log(sum)
+                    sum--;
+                    this.queye_1 = this.queye_1 + sum;
+
+                }
+            },
+            save(PCB,num){
+                var flag = 0;
+                //前三位存物理内存
+                for ( var i=0;i<this.dgm.length;i++){
+                    if(num>3){
+                        if(flag<=3){;
+                            if(this.dgm[i]==0){
+                                this.dgm[i] = 9;
+                                flag++;
+                                num--;
+                            }
+                        }
+                    }else{
+                        if(flag<=num){
+                            if(this.dgm[i]==0){
+                                this.dgm[i] = 9;
+                                flag++;
+                                num--;
+                            }
+                        }
+                    }
+                }
+                //后面存交换空间
+                for ( var i=0;i<this.ehg.length;i++){
+                    if(num>0){
+                            if(this.ehg[i]==0){
+                                this.ehg[i] = 9;
+                                num--;
+                        }
+                    }
+                }
+            },
+            showpage(PCB,num){
+                //页号
+                for(var i = 0; i < num ; i++){
+                    this.pagenum.push(i);
+                }
+                //块号
+                while((num<=3) && (num>=1)){
+                    for( i = 0; i < this.dgm.length; i++){
+                        if(this.dgm[i] == 9){
+                            this.knum.push(i+1);
+                            this.changespace.push(-1);
+                            this.cun.push(1);
+                            num=num-1;
+                            if(num==0){break;}
+                            console.log(num);
+                        }
+                    }
+                }
+                while(num>3){
+                    var flag = 0;
+                    if(flag<3){
+                        for(var i = 0; i < this.dgm.length; i++){
+                            if(this.dgm[i] == 9){
+                                this.knum.push(i+1);
+                                this.cun.push(1);
+                                flag++;
+                            }
+                        }
+                    }
+                    for(var i = 0; i < num-3; i++){this.knum.push(-1);}
+                    for(var i = 0; i < 3; i++){this.changespace.push(-1);}
+                    for(i = 0; i < this.ehg.length; i++){
+                        if(this.ehg[i] == 9){
+                            this.changespace.push(i+1);
+                            this.cun.push(0);
+                            num--;
+                        }
+                    }
+
+                }
+
+            },
+            delpage(){
+
+                this.pagenum.splice(0,this.pagenum.length);
+                this.changespace.splice(0,this.changespace.length);
+                this.knum.splice(0,this.knum.length);
+                this.cun.splice(0,this.cun.length);
+                console.log();
+            },
+            //内存与交换空间释放
+            del(){
+
+                for ( var i=0;i<this.dgm.length;i++){
+                    if(this.dgm[i]==9){
+                        this.dgm[i]=0;
+                        console.log(111)
+                    }
+                }
+                for ( var i=0;i<this.ehg.length;i++){
+                    if(this.ehg[i]==9){
+                        this.ehg[i]=0;
+                    }
+                }
+            },
+            create(){
+                var PCBtemp = new PCB(this.str,this.process*1);
+                if(this.process==''){
+                    alert("请输入进程!")
+                }else {
+                    if (this.running.length == 0) {
+                        this.running.push(PCBtemp);
+                        this.save(this.running[0],Math.ceil(this.running[0].size/1024));
+                        this.showpage(this.running[0],Math.ceil(this.running[0].size/1024));
+                    } else {
+                        this.ready.push(PCBtemp);
+                    }
+
+                }
+            },
+            time(){
+
+                if(this.running.length==0||this.ready.length==0){
+                    alert('不能进行')
+                }else{
+                    this.ready.push(this.running[0]);
+                    this.running[0] = this.ready[0];
+                    this.ready.splice(0,1);
+                    this.del();
+                    this.save(this.running[0],Math.ceil(this.running[0].size/1024));
+                    this.delpage();
+                    this.showpage(this.running[0],Math.ceil(this.running[0].size/1024));
+                }
+            },
+            block(){
+                if(this.running.length==0){
+                    alert('没有可以阻塞的进程')
+                }else{
+                    this.blk.push(this.running[0]);
+                    if(this.ready.length!=0){
+                        this.running[0] = this.ready[0];
+                        this.ready.splice(0,1);
+                        this.del();
+                        this.save(this.running[0],Math.ceil(this.running[0].size/1024));
+                        this.delpage();
+                        this.showpage(this.running[0],Math.ceil(this.running[0].size/1024));
+                    }else{
+                        this.running.splice(0,1);
+                        this.del();
+                        this.delpage();
+                    }
+                }
+            },
+            wakeup(){
+                if(this.blk[0] ==null){
+                    alert('没有需要唤醒的进程')
+                }else{
+                    this.ready.push(this.blk[this.blk.length-1]);
+                    this.blk.splice(this.blk.length-1,1);
+                }
+                if(this.running.length == 0){
+                    this.running[0] =this.ready[0] ;
+                    this.ready.splice(0,1);
+                }
+                this.del();
+                this.save(this.running[0],Math.ceil(this.running[0].size/1024));
+                this.delpage();
+                this.showpage(this.running[0],Math.ceil(this.running[0].size/1024));
+            },
+            over(){
+                var num = prompt('请输入需要结束的进程');
+
+                if(this.running[0].name == parseInt(num)){
+                    if(this.ready.length==0){
+                        this.running.splice(0,1);
+                        this.delpage();
+                    }else{
+                        this.running.splice(0,1,this.ready[0]);
+                        this.ready.splice(0,1);
+                        this.delpage();
+                        console.log(this.running[0]);
+                        this.showpage(this.running[0],Math.ceil(this.running[0].size/1024));
+                    }
+                }else{
+                    this.ready.map((elem,index)=>{
+                        if(elem.name == num){
+                            this.ready.splice(index,1);
+                        }
+                    });
+                    this.blk.map((elem,index)=>{
+                        if(elem.name == num){
+                            this.blk.splice(index,1);
+                        }
+                    })
+                }
+            },
+        }
+    })
+</script>
+</body>
+</html>

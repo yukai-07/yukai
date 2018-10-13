@@ -63,13 +63,12 @@
         data:{
             str:[],
             implement:'没有正在执行的进程',//执行状态
-            ready:[],
-            blk:[],
+            ready:[],//就绪
+            blk:[],//阻塞
             data:''
         },
         methods:{
             create(){
-                console.log(this.str);
                 if(this.implement == '没有正在执行的进程'){
                     this.implement = this.str[0];
                 }else{
@@ -103,6 +102,12 @@
                 }else{
                     this.ready.push(this.blk[this.blk.length-1]);
                     this.blk.splice(this.blk.length-1,1);
+                    // this.ready.push(this.blk[0]);
+                    // this.blk.splice(0,1);
+                }
+                if(this.implement == '没有正在执行的进程'){
+                    this.implement = this.str[0];
+                    this.ready.splice(0,1);
                 }
             },
             over(){
