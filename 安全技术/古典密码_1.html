@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="container">
+    输入明文: <br>
+    <input type="text" v-model="mingwen"><br>
+    输入密钥: <br>
+    <input type="text" v-model="mishi"> <br>
+    <button @click="addkey()">加密</button>
+    <br>
+    密文:{{this.miwen}} <br>
+    <button @click="delkey()">解密</button>
+    <br>
+    解密后明文为:{{this.later}}
+</div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //单表代替
+    var vm = new Vue({
+        el:'#container',
+        data:{
+            mingwen:'',
+            mishi:'',
+            miwen:'',
+            arr:[],//密匙
+            later:'',
+        },
+        methods:{
+            addkey(){
+                //26字母存入数组
+                var word26 = [];
+                for (var i =0;i<26;i++){
+                    word26.push(String.fromCharCode((97+i)));
+                }
+                //补全密匙
+                var str = this.mishi;
+                var temp = true;
+                for (var i=0;i<this.mishi.length;i++) {
+                    this.arr.map((elem)=>{
+                        if(elem == this.mishi[i]){
+                            temp = false;
+                        }
+                    });
+                    if(temp){
+                        this.arr.push(this.mishi[i]);
+                    }
+                }
+                var num = str.length;
+                for(var i=0;i< 26 - num;i++){
+                    this.arr.map((el)=>{
+                        if(el == String.fromCharCode((97+i))){
+                            num--;
+                            i++;
+                        }
+                    });
+                    this.arr.push(String.fromCharCode((97+i)));
+                }
+                //密文
+                for (var i=0;i<this.mingwen.length;i++) {
+                    word26.forEach((elem, index) => {
+                        if (this.mingwen[i] == elem) {
+                           this.miwen = this.miwen + this.arr[index];
+                        }
+                    })
+                }
+                console.log(this.arr);
+            },
+            delkey(){
+                console.log(this.arr);
+                //26字母存入数组
+                var word26 = [];
+                for (var i =0;i<26;i++){
+                    word26.push(String.fromCharCode((97+i)));
+                }
+                //
+                for (var i=0;i<this.miwen.length;i++) {
+                    this.arr.forEach((elem, index) => {
+                        if (this.miwen[i] == elem) {
+                            this.later = this.later +word26[index];
+                        }
+                    })
+                }
+            }
+        },
+    })
+</script>
+</html>

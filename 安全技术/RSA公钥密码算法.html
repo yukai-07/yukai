@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RSA</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      width: 800px;
+      height: 500px;
+      background-color: #f1f3f4;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -400px;
+      margin-top: -250px;
+      border-radius: 50px;
+    }
+
+    .top {
+      width: 800px;
+      height: 75px;
+      background-color: #254242;
+      border-radius: 50px 50px 0 0;
+      text-align: center;
+      line-height: 75px;
+    }
+
+    .top p {
+      color: #fff;
+      font-size: 2.5em;
+    }
+
+    .block {
+      margin-top: 50px;
+      font-size: 1.3em;
+      height: 30px;
+      width: 80%;
+    }
+
+    .block label {
+      margin-left: 250px;
+    }
+
+    .block input {
+      width: 200px;
+      height: 25px;
+    }
+
+    .block select {
+      width: 200px;
+      height: 25px;
+    }
+
+    .button {
+      margin-top: 50px;
+      margin-left: 350px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="top">
+      <p>RSA</p>
+    </div>
+    <div class="block">
+      <label for="mingwen">明文:</label>
+      <input type="text" placeholder="请输入明文:" id="mingwen">
+    </div>
+    <div class="block">
+      <label for="miwen">密文:</label>
+      <input type="text" placeholder="请输入密文:" id="miwen">
+    </div>
+    <div class="block">
+      <label for="miyao">密钥:</label>
+      <input type="text" placeholder="请输入密文:" id="miyao">
+    </div>
+    <button class="button" id="mingToMi">加密</button>
+    <button id="miToMing">解密</button>
+  </div>
+  <script>
+    var miwen = document.getElementById('miwen');
+    var mingwen = document.getElementById('mingwen');
+    var miyao = document.getElementById('miyao');
+    var mingToMi = document.getElementById('mingToMi');
+    var miToMing = document.getElementById('miToMing');
+
+    var quicks = function (a, b, c) {
+      var ans = 1;
+      a = a % c;
+      while (b != 0) {
+        if (b & 1) {
+          ans = (ans * a) % c;
+        }
+        b = b >> 1;
+        a = (a * a) % c;
+      }
+      return ans;
+    }
+
+    var Miller_Rabin = function (n) {
+      var t = 0;
+      var d = n - 1;
+      while ((d & 1) == 0) {
+        d = d >> 1;
+        t++;
+      }
+      var a = 2;
+      var x = quicks(a, d, n);
+      var y;
+      for (let i = 0; i < t; i++) {
+        y = quicks(x, 2, n);
+        if (y == 1 && x != 1 && x != n - 1) {
+          return false;
+        }
+        x = y;
+      }
+      if (x != 1) {
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+
+    var gcd = function (a, b) {
+      while (b != 0) {
+        [a, b] = [b, a % b];
+      }
+      return a;
+    }
+
+    var exgcd = function (a, b, x, y) {
+      if (b == 0) {
+        x = 1;
+        y = 0;
+        return a;
+      }
+      var r = exgcd(b, a % b, x, y);
+      var t = x;
+      x = y;
+      y = t - a / b * y;
+      return r;
+    }
+
+    var _exgcd = function (m, n) {
+      var x1, y1, x0, y0;
+      x0 = 1; y0 = 0;
+      x1 = 0; y1 = 1;
+      var x = 0, y = 1;
+      var r = m % n;
+      var q = (m - r) / n;
+      while (r) {
+        x = x0 - q * x1; y = y0 - q * y1;
+        x0 = x1; y0 = y1;
+        x1 = x; y1 = y;
+        m = n; n = r; r = m % n;
+        q = (m - r) / n;
+      }
+      return x;
+    }
+
+    mingToMi.addEventListener('click', function () {
+      var value1 = mingwen.value;
+      var value2 = miyao.value;
+      var miyaoArr = value2.split(' ');
+      miyaoArr.forEach(element => {
+        return Number.parseInt(element);
+      });
+      if (Miller_Rabin(miyaoArr[0]) && Miller_Rabin(miyaoArr[1])) {
+        var num = miyaoArr[0] * miyaoArr[1];
+        var _num = (miyaoArr[0] - 1) * (miyaoArr[1] - 1);
+        var e = miyaoArr[2];
+        if (gcd(_num, e) > 1) {
+          alert('选取的e值不合理');
+          return ;
+        }
+        var result = quicks(Number.parseInt(value1), e, num);
+        miwen.value = result;
+      }
+      else {
+        alert('存在非素数');
+      }
+
+    }, false);
+
+    miToMing.addEventListener('click', function () {
+      var value1 = miwen.value;
+      var value2 = miyao.value;
+      var miyaoArr = value2.split(' ');
+      miyaoArr.forEach(element => {
+        return Number.parseInt(element);
+      });
+      if (Miller_Rabin(miyaoArr[0]) && Miller_Rabin(miyaoArr[1])) {
+        var num = miyaoArr[0] * miyaoArr[1];
+        var _num = (miyaoArr[0] - 1) * (miyaoArr[1] - 1);
+        var e = miyaoArr[2];
+        if (gcd(_num, e) > 1) {
+          alert('选取的e值不合理');
+          return;
+        }
+        var d = _exgcd(e, _num);
+        var result = quicks(Number.parseInt(value1), d, num);
+        mingwen.value = result;
+      }
+      else {
+        alert('存在非素数');
+      }
+
+    }, false)
+  </script>
+</body>
+
+</html>

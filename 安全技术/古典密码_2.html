@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="container">
+    输入明文: <br>
+    <input type="text" v-model="mingwen"><br>
+    <button @click="addkey()">加密</button>
+    <br>
+    密文:{{this.miwen}} <br>
+    <button @click="delkey()">解密</button>
+    <br>
+    解密后明文为:{{this.later}}
+</div>
+</body>
+<script src="vue.js"></script>
+<script>
+    //仿射加密
+    var vm = new Vue({
+        el:'#container',
+        data:{
+            mingwen:'',
+            mishi:'',
+            miwen:'',
+            arr:[],//密匙
+            later:'',
+            number:[],
+            number_later:[],
+            temp:[],
+        },
+        methods:{
+            addkey(){
+                //26字母存入数组
+                var word26 = [];
+                for (var i =0;i<26;i++){
+                    word26.push(String.fromCharCode((97+i)));
+                }
+                for(var i=0;i<this.mingwen.length;i++){
+                    word26.forEach((elem,index)=>{
+                        if(this.mingwen[i]==elem){
+                            this.number.push(index);
+                        }
+                    })
+                }
+                console.log(this.number);
+                var key = [7,3];
+                for(var i=0;i<this.number.length;i++){
+                    this.number_later.push((key[0]*this.number[i]+key[1])%26);
+                }
+                console.log(this.number_later);
+                for(var i=0;i<this.number_later.length;i++){
+                    this.miwen = this.miwen + word26[this.number_later[i]];
+                }
+
+            },
+            delkey(){
+
+
+                //26字母存入数组
+                var word26 = [];
+                for (var i =0;i<26;i++){
+                    word26.push(String.fromCharCode((97+i)));
+                }
+                var n=15;
+                var m = 26-7;
+                for(var i=0;i<this.number_later.length;i++){
+                    if(parseInt((n*this.number_later[i]-m)%26)<0){
+                        this.temp.push(26+parseInt((n*this.number_later[i]-m)%26));
+                    } else{
+                        this.temp.push(parseInt((n*this.number_later[i]-m)%26));
+                    }
+                }
+                for(var i=0;i<this.temp.length;i++){
+                    this.later = this.later + word26[this.temp[i]];
+
+                }
+
+            },
+        },
+    })
+</script>
+</html>

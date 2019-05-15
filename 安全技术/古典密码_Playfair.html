@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="container">
+    输入明文: <br>
+    <input type="text" v-model="mingwen"><br>
+    输入密钥: <br>
+    <input type="text" v-model="keychars"> <br>
+    <button @click="addkey()">加密</button>
+    <br>
+    密文:{{miwen}} <br>
+    <button @click="delkey()">解密</button>
+    <br>
+    解密后明文为:{{later}}
+</div>
+<script src="vue.js"></script>
+<script>
+
+
+
+    var vm = new Vue({
+        el:'#container',
+        data:{
+            mingwen:'',
+            keychars:'',
+            miwen:'',
+            arr:[],//密匙
+            later:'',
+        },
+        methods: {
+            createKey(keychars) {
+                //字母顺序数组
+                var allChars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y'];
+                //变量keychars获取字母在字母顺序表中位置，删除该字母
+                for (var i = 0; i < keychars.length; i++) {
+                    var index = allChars.indexOf(keychars[i]);
+                    if (index > -1) {
+                        allChars.splice(index, 1);
+                    }
+                }
+                //将keychar中的字母插入到字母表中
+                for (var i = keychars.length - 1; i >= 0; i--) {
+                    allChars.unshift(keychars[i]);
+                }
+                //从第一列将keychars插入至密码表
+                var key;
+                for (var i = 0; i < 5; i++) {
+                    for (var j = 0; j < 5; j++) {
+                        key[j][i] = allChars[i * 5 + j];
+                    }
+                }
+                return key;
+            },
+            //
+            removeDuplicate(str) {
+                var result = [], tempStr = "";
+                var arr = str.split('');//把字符串分割成数组
+                //arr.sort();//排序
+                for (var i = 0; i < arr.length; i++) {
+                    var repeatBack = true;//设计变量是为确保字符串前部分不存在相同字符，因为以下算法只能确保连在一起相同的字符
+                    for (var j = 0; j < result.length; j++) {
+                        if (arr[i] == result[j])
+                            repeatBack = false;
+                    }
+                    if (arr[i] !== tempStr && repeatBack) {
+                        result.push(arr[i]);
+                        tempStr = arr[i];
+                    } else {
+                        continue;
+                    }
+                }
+                return result.join("");//将数组转换为字符串
+            },
+            addkey(){
+                console.log(111);
+                var key,str;
+                 key = this.createKey(this.keychars);
+                 // this.removeDuplicate(this.mingwen);
+                console.log(key);
+            },
+        }
+    })
+</script>
+</body>
+</html>

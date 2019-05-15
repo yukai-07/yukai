@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>古典密码</title>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+      }
+      .box{
+        width: 800px;
+        height: 500px;
+        background-color: #f1f3f4;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -400px;
+        margin-top: -250px;
+        border-radius: 50px;
+      }
+      .top{
+        width: 800px;
+        height: 75px;
+        background-color: deepskyblue;
+        border-radius: 50px 50px 0 0;
+        text-align: center;
+        line-height: 75px;
+      }
+      .top p{
+        color: #fff;
+        font-size: 2.5em;
+      }
+      .block{
+        margin-top: 50px;
+        font-size: 1.3em;
+        height: 30px;
+        width: 80%;
+      }
+      .block label{
+        margin-left: 250px;
+      }
+      .block input{
+        width: 200px;
+        height: 25px;
+      }
+      .block select{
+        width: 200px;
+        height: 25px;
+      }
+      .button{
+        margin-top: 50px;
+        margin-left: 350px;
+      }
+    </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="top">
+      <p>【信息安全基础】维基尼密码
+      </p>
+    </div>
+    <div class="block">
+      <label for="ming">明文:</label>
+      <input type="text" placeholder="" id="ming">
+    </div>
+    <div class="block">
+      <label for="mi">密文:</label>
+      <input type="text" placeholder="" id="mi">
+    </div>
+    <div class="block">
+      <label for="key">密钥:</label>
+      <input type="text" id="key" placeholder="">
+    </div>
+
+    <button class="button" onclick="vigenereEncryption();">加密</button>
+    <button onclick="vigenereDecrypt();">解密</button>
+  </div>
+  <script>
+    //生成一个二维数组
+    var vigenere = [];
+    vigenere[0] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    for (let i = 1; i < 26; i++) {
+      vigenere[i] = [];
+      for (let j = 0; j < 26; j++) {
+        if (j != 25) {
+          vigenere[i][j] = vigenere[i - 1][j + 1];
+        }
+        else {
+          vigenere[i][j] = vigenere[i - 1][0];
+        }
+      }
+    }
+    console.log(vigenere);
+
+    function vigenereEncryption() {
+      let ming = document.getElementById("ming");
+      let mi = document.getElementById("mi");
+      let key = document.getElementById("key");
+      let mingArr = [];
+      for (let i = 0; i < ming.value.length; i++) {
+        for (let j = 0; j < vigenere[0].length; j++) {
+            //判断列
+          if (ming.value[i] == vigenere[0][j]) {
+            mingArr.push(j);
+            break;
+          }
+          if (j == vigenere[0].length - 1) {
+            alert("请检查您的输入是否正确！");
+            return 0;
+          }
+        }
+      }
+      let keyArr = [];
+      for (let i = 0; i < key.value.length; i++) {
+        for (let j = 0; j < vigenere[0].length; j++) {
+            //判断行
+          if (key.value[i] == vigenere[0][j]) {
+            keyArr.push(j);
+          }
+        }
+      }
+      let result = "";
+      for (let i = 0; i < mingArr.length; i++) {
+          //找到第几行第几列
+        result += vigenere[keyArr[i % keyArr.length]][mingArr[i]];
+      }
+      mi.value = result;
+    }
+
+    function vigenereDecrypt() {
+      let ming = document.getElementById("ming");
+      let mi = document.getElementById("mi");
+      let key = document.getElementById("key");
+      let keyArr = [];
+      for (let i = 0; i < key.value.length; i++) {
+        for (let j = 0; j < vigenere[0].length; j++) {
+          if (key.value[i] == vigenere[0][j]) {
+            keyArr.push(j);
+            break;
+          }
+          if (j == vigenere[0].length - 1) {
+            alert("请检查您的输入是否正确！");
+            return 0;
+          }
+        }
+      }
+      let result = "";
+      for (let i = 0; i < mi.value.length; i++) {
+        for (let j = 0; j < 26; j++) {
+          var keykey = keyArr[i % keyArr.length];
+          if (mi.value[i] == vigenere[keykey][j]) {
+            result += vigenere[0][j];
+            break;
+          }
+          if (j == vigenere[keykey].length - 1) {
+            alert("请检查您的输入是否正确！");
+            return 0;
+          }
+        }
+      }
+      ming.value = result;
+    }
+  </script>
+</body>
+
+</html>
