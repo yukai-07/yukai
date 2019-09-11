@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b10c8811-2546-4ba6-ac64-75e9a2d08b07" name="Default Changelist" comment="">
+    <list default="true" id="b10c8811-2546-4ba6-ac64-75e9a2d08b07" name="Default Changelist" comment="面经">
       <change afterPath="$PROJECT_DIR$/DOM/lianxi.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/myText/coding.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/myText/demo.html" afterDir="false" />
@@ -94,11 +94,6 @@
               <item name="yukai" type="b2602c69:ProjectViewProjectNode" />
               <item name="yukai" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="yukai" type="b2602c69:ProjectViewProjectNode" />
-              <item name="yukai" type="462c0819:PsiDirectoryNode" />
-              <item name="myText" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -164,18 +159,17 @@
       <workItem from="1566869397290" duration="9000" />
       <workItem from="1566896545084" duration="4339000" />
       <workItem from="1567158528482" duration="36000" />
-      <workItem from="1568113657974" duration="1168000" />
+      <workItem from="1568113657974" duration="1362000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29085000" />
+    <option name="totallyTimeSpent" value="29279000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1445" height="811" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2394663" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2394663" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -186,8 +180,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32962447" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32962447" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -196,6 +190,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="面经" />
+    <option name="LAST_COMMIT_MESSAGE" value="面经" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/DOM/1_BOM.html">
