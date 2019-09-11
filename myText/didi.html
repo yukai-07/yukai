@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<script>
+  // function jisuan(N,M) {
+  //   let arr=[]
+  //   for(let i=0;i<3;i++){
+  //     arr[i]=[]
+  //     for(let j=0;j<3;j++){
+  //       arr[i][j]=1;
+  //     }
+  //   }
+  //   arr[0][1] = 3
+  //   arr[1][0] = 3
+  //   arr[2][2] = 3
+  //   let y = []
+  //   let sum = 0
+  //   for (let i = 0;i<N;i++){
+  //     for (let j = 0;j<M;j++){
+  //       y.push(arr[j][i])
+  //     }
+  //     sum = sum + y.sort().pop()
+  //     y = []
+  //   }
+  //
+  //   return sum
+  // }
+  // console.log(jisuan(3,3))
+  // function jisuan(N,M) {
+  //   let arr = []
+  //
+  //   for (let i = 0; i < 3; i++) {
+  //     arr[i] = []
+  //     for (let j = 0; j < 3; j++) {
+  //       for (let m = 2; m < arrList.length; m++) {
+  //         arr[i][j] = arrList[m];
+  //       }
+  //     }
+  //   }
+  //   let y = []
+  //   let sum = 0
+  //   for (let i = 0; i < N; i++) {
+  //     for (let j = 0; j < M; j++) {
+  //       y.push(arr[j][i])
+  //     }
+  //     sum = sum + y.sort().pop()
+  //     y = []
+  //   }
+  // }
+
+  function fn() {
+    let num = 6
+    let str = '3 + 2 + 1 + -4 * -5 + 1'
+    let arr = str.split(' ')
+    for(let i=0;i<str.length;i++) {
+      let temp = 0
+      if(!!parseInt(arr[i])) {
+        temp = parseInt(arr[i])
+        continue;
+      }
+      if(arr[i] === '+' || arr[i] === '-'){
+        if(!!parseInt(arr[i+1])) continue;
+
+      }
+    }
+
+  }
+
+
+</script>
+</body>
+</html>

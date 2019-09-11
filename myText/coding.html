@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  /*function isPrivate(ip){
+    // TODO
+    var temp = false;
+    var arr = ip.split('.')
+    console.log(arr)
+    if(parseInt(arr[0]) == 10){
+      for(let i = 1; i < 4; i++) {
+        if(arr[i] >= 0 && arr[i] <=255) {
+          if(i === 3 ) {
+            temp = true
+          }
+          continue;
+        }else {
+          return false;
+        }
+      }
+    };
+    if(parseInt(arr[0]) == 172){
+      if(parseInt(arr[1]) >= 16 && parseInt(arr[1]) <= 31) {
+        for(let i = 2; i < 4; i++) {
+          if(arr[i] >= 0 && arr[i] <=255) {
+            if(i === 3 ) {
+              temp = true
+            }
+            continue;
+          }else {
+            return false;
+          }
+        }
+      }
+    };
+    if(parseInt(arr[0]) == 192 && parseInt(arr[1]) == 168){
+      for(let i = 2; i < 4; i++) {
+        if(arr[i] >= 0 && arr[i] <=255) {
+          if(i === 3 ) {
+            temp = true
+          }
+          continue;
+        }else {
+          return false;
+        }
+      }
+    };
+    if(arr[0] === '127' && arr[1]=== '0' && arr[2] === '0' && arr[3] === '0/8') {
+      return true
+    }
+    if(temp) {
+      return true
+    }else {
+      return false
+    }
+  }
+  console.log(isPrivate('127.0.0.0/8'))*/
+
+  /*function camel(str) {
+    // TODO
+    var s = ''
+    for(let i = 0; i < str.length; i++) {
+      if(str[i] == '-' || str[i] == '_' || str[i] == '@'){
+        s = s + str[i+1].toLocaleUpperCase()
+        i++
+      }else {
+        s = s + str[i]
+      }
+    }
+    return s
+  }
+  console.log(camel('a-b_c@d-aaaa'))*/
+
+
+  function isRepeat(str) {
+    var temp = 0;
+    var strTemp = '';
+    for(let i = 0; i< str.length;i++) {
+      if(str[i] === '[') {
+        for(let j = i+1; j< str.length;j++) {
+          if(str[j] === ']') {
+            i = j
+          }else {
+            strTemp = strTemp + str[j]
+          }
+        }
+      }
+    }
+    return arguments.callee(strTemp);
+  }
+  console.log(isRepeat('abcde[3|b[2|a]]'))
+</script>
+</body>
+</html>

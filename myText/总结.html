@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+一、自我介绍：
+    我叫于楷，来自黑龙江大学，计算机科学与技术专业，目前是一名即将大四的学生，在学校担任过学生会生活部
+部长，还有计算机三班班长，和软件工程一班班主任，大二期间我参加了很多活动，也认识了很多学长学姐，
+学长学姐有很多喜欢前端的，耳濡目染之下我也了解了一些，也是在这个时候我开始接触前端，平时我也看过他们写的一些页面，
+觉得很有意思，然后就向他们请教并且自学一些前端知识，接触多了觉得这东西相对没有那么枯燥，而且每完成一个东西很有成就感，
+然后我就开始上一些博客更深一步的学习了解前端，大二下的时候也跟着我们学校的老师做了一些项目，通过这些项目，我学到了很
+多以前没接触过的，如果真有荣幸能够进入咱们公司的话，我相信我会和大家相处的很融洽，并且我的学习能力也比较强，
+也遇到了一些问题，然后不断的上网查，请教学长学姐最终解决问题，完成项目
+
+二、项目介绍：
+    1、黑大学生综合测评系统：
+    项目描述：学生的综合素质测评网站，包含学生的成绩管理，奖项管理，留言查询，操作记录等，学校可以
+    根据此系统进行评奖评优，分数统计和审核
+    实现技术：利用vue-cli，webpack+element-ui+CI快速搭建开发环境，利用Ajax进行前后台的传值，使用
+    Element-ui达到用户决策、结果可控，利用webpack进行打包
+    2、美食管理系统：
+    项目描述：在移动端上实现了用户、管理员两个身份的注册登录，用户登陆后能够查看首页、留言板、个人
+    信息等，首页用轮播图能够查看各种美食图片，能够查看美食列表，每个美食有作者、菜名、时间、点击量
+    等信息，点击进入详细信息和制作方法，每点击一次点击量增加，并且详细信息下方能够评论此美食；个人
+    信息能够查看用户的个人信息，可以对个人信息进行修改；留言板上可以进行留言评价，并显示留言者昵称、
+    留言时间、留言内容；管理员身份能够删除美食列表、用户列表、留言列表、评论列表；
+    实现技术：利用PHP CodeIgniter框架，利用JQuery完成前端页面设计，通过AJAX操作完成与数据库的连
+    接并实现增、删、改、查等操作，完成页面跳转，利用session完成对用户信息的暂存。
+    3、易填表系统:
+    项目描述：这是一个智能填写表格的系统,通过教师基础信息的采集,以及日常科研信息的录入,来扩充
+    知识储备。在往后填表的过程中,先分析表格,再自动填充可识别内容,大幅度减少老师的工作量。项目采用前后
+    端分离的架构。分为 pc 端、微信端。依托公众号进行开发。
+    实现技术：采用 dva 作为项目脚手架，pc 端采用 react-router4 的动态路由,实现多页面拆分打包,加快首屏
+    加载时间。 配置了 babel-plugin-import,实现 antd 资源的按需打包，带有数据 mock,模拟后台数据接口,按
+    照生产环境和开发环境划分,互不影响。 编写 request 模块统一管理 ajax,使用 async/await，对 redux 的
+    store 进行本地存储,在刷新时自动存入 localstorage 中。
+    4、完美购物:
+    项目描述：模仿微博部分功能，拥有圈子、信息、商城、我的等模块的社交商城软件。圈子模块可以发动态，查看全部
+    关注、大V、农业官网，能够实现转发、点赞、评论，可以和好友互发消息、查看订阅、查看点赞、查看评论、查看与
+    我相关。利用Vue实现了组件化的开发，利用vue-router实现页面切换与返回。
+    实现技术：利用Vue-cli脚手架为整体框架，引入Element UI组件库更快的实现移动端良好布局，利用Vue-router实
+    现了路由间的跳转，利用Vuex实现路由间数据传送，利用mockjs产生模拟商品的假数据，通过ajax获取到前端页面
+三、HTML
+1、行级元素 水平分布多个占一行 不可以设置宽高
+a span i strong em
+块级元素 垂直分布 自己占一行 可以设置宽高
+div p ul li h1-h6 table
+em是相对于父元素的的font-size
+rem是相对于根元素的html的font-size
+2、有关HTML的语义化，你的理解：
+html中自带了一些标签，这些标签有特定含义，比如H1-H6代表标题、p代表段落、img代表图片
+html5里也推出了一些新的标签：header、footer、nav这些标签都有特定的含义，使用的时候应该尽量按照它的语义来使用
+好处：
+（1）别人阅读你的代码的时候能够根据标签才出来你的用意，有利于程序员阅读，便于团队开发和维护
+（2）浏览器读取方便
+（3）有利于搜索引擎优化（SEO：Search Engine Optimization）（比如说会根据标签来搜索，可能重点会搜索h1）
+（4）有一些标签默认会有一些样式，如果浏览器禁止了CSS样式还可以达到突出样式的效果，比如h1
+
+四、CSS
+1.css 选择器
+id选择器
+class选择器
+标签选择器
+后代选择器 div p
+子带选择器  div > p
+伪类类选择器 :hover
+伪元素选择器  ::after
+群组选择器  div,p
+属性选择器  div[id]
+紧邻的兄弟元素 div+p
+后边所有的div ~ p
+
+2.css优先级
+!important
+style  1000
+id    100
+class 10
+标签   1
+
+3.position:
+absolute
+绝对定位  定位后空间释放  相对于最近已定位的祖先元素
+relative
+相对定位  定位后空间不释放 相对于自己的初始位置
+fixed
+固定定位  定位后空间释放  相对于浏览器可视窗口
+static
+默认的定位
+sticky
+粘性定位  吸顶效果
+
+4.浮动
+float:left right
+浮动元素脱离文档流 空间释放,宽高是内容撑的
+子元素浮动，父元素高度塌陷
+解决塌陷
+1.父元素添加高度
+2.overflow:hidden;
+3.clearfix
+::after{
+content:"",
+display:block;
+clear:both
+}
+
+5.盒模型
+css盒模型  内容 content + padding +border+margin
+1 标准盒模型
+width:200
+width = content
+2 怪异盒模型 (ie6以及ie6以下的浏览器 不写doctype 会表现成怪异)
+width:200
+width = border + padding + content
+标准和模型 和 怪异 转化
+box-sizing : content-box(标准盒模型)  border-box (怪异盒模型);
+
+6.外边距合并
+    1.父元素加overflow:hidden;
+    2.父元素加边框
+    3.父元素或子元素  浮动或者定位了
+
+7.bfc
+BFC 块级格式化上下文 （Box、Formatting Context）
+BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+
+触发BFC条件 ：
+1.html
+2.float属性不为none
+3.position为absolute或fixed
+4.display为inline-block, table-cell, table-caption, flex, inline-flex
+5.overflow不为visible
+布局规则：
+内部的Box会在垂直方向，一个接一个地放置。
+Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
+每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
+BFC的区域不会与float box重叠。
+BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+计算BFC的高度时，浮动元素也参与计算
+
+8.CSS3
+#div1{
+width: 200px;
+height: 200px;
+background: #ff0000;
+/* 属性  执行时间 运动方式 延迟时间 */
+/* transition: width 2s ease 2s ; */
+/* 动画名 执行时间 运动方式 延迟时间 执行次数 */
+animation: run 3s linear 2s 2 ;
+}
+@keyframes run {
+50%{
+width:800px;
+}
+100%{
+width:500px;
+}
+}
+#div1:hover{
+width:800px;
+}
+选择器
+:last-child /* 选择元素最后一个孩子 */
+:first-child /* 选择元素第一个孩子 */
+:nth-child(1) /* 按照第几个孩子给它设置样式 */
+:nth-child(even) /* 按照偶数 */
+:nth-child(odd)  /* 按照奇数 */
+:disabled /* 选择每个禁用的E元素 */
+:checked /* 选择每个被选中的E元素 */
+:not(selector) /* 选择非 selector 元素的每个元素 */
+::selection /* 选择被用户选取的元素部分 */
+伪元素
+::before {} /* 选择器在被选元素的前面插入内容和定义css，使用 content 属性来指定要插入的内容。 */
+::after {} /* 选择器在被选元素的后面插入内容和定义css，使用 content 属性来指定要插入的内容。 */
+:first-letter /* 选择该元素内容的首字母 */
+:first-line /* 选择该元素内容的首行 */
+::selection /* 选择被用户选取的元素部分 */
+background-image: url("../img/2.png");
+background-repeat: no-repeat;
+/*background-position: 100px 10px;*/
+/*background-size: contain;*/
+/*background-color: #000;*/
+
+word-wrap: break-word 设置或检索当当前行超过指定容器的边界时是否断开转行
+/*text-overflow: clip;*/不是省略标记，溢出隐藏
+/*text-overflow: ellipsis;*/当对象内文本溢出时显示...
+
+
+9.
+display:none  隐藏对应的元素，在文档布局中不再给它分配空间，它各边的元素会合拢，
+就当他从来不存在。
+
+visibility:hidden  隐藏对应的元素，但是在文档布局中仍保留原来的空间。
+
+CSS中 link 和@import 的区别是？
+(1) link属于HTML标签，而@import是CSS提供的;
+(2) 页面被加载的时，link会同时被加载， 而@import引用的CSS会等到页面被加载完再加载;
+(3) import只在IE5以上才能识别，而link是HTML标签，无兼容问题;
+(4) link方式的样式的权重 高于@import的权重.
+
+9.常见兼容性问题
+* png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.也可以引用一段脚本处理.
+
+* 浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。
+
+* IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。
+
+* 浮动ie产生的双倍距离（IE6双边距问题：在IE6下，如果对元素设置了浮动，同时又设置了margin-left或margin-right，
+margin值会加倍。）
+#box{ float:left; width:10px; margin:0 0 0 100px;}
+
+这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中加入 ——_display:inline;将其转化为行内属性。
+(_这个符号只有ie6会识别)
+
+*  渐进识别的方式，从总体中逐渐排除局部。
+
+首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。
+接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
+
+css
+.bb{
+background-color:#f1ee18;/*所有识别*/
+.background-color:#00deff\9; /*IE6、7、8识别*/
++background-color:#a200ff;/*IE6、7识别*/
+_background-color:#1e0bd1;/*IE6识别*/
+}
+
+*  IE下,可以使用获取常规属性的方法来获取自定义属性,
+也可以使用getAttribute()获取自定义属性;
+Firefox下,只能使用getAttribute()获取自定义属性.
+解决方法:统一通过getAttribute()获取自定义属性.
+
+* IE下,event对象有x,y属性,但是没有pageX,pageY属性;
+Firefox下,event对象有pageX,pageY属性,但是没有x,y属性.
+
+* 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
+
+* Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,
+可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决.
+
+* 超链接访问过后hover样式就不出现了 被点击访问过的超链接样式不在具有hover和active了解决方法是改变CSS属性的
+排列顺序:
+L-V-H-A :  a:link {} a:visited {} a:hover {} a:active {}
+
+* 怪异模式问题：漏写DTD声明，Firefox仍然会按照标准模式来解析网页，但在IE中会触发怪异模式。为避免怪异模式给我
+们带来不必要的麻烦，最好养成书写DTD声明的好习惯。现在可以使用[html5](http://www.w3.org/TR/html5/
+single-page.html)推荐的写法：`< doctype html>`
+
+* 上下margin重合问题
+ie和ff都存在，相邻的两个div的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生重合。
+解决方法，养成良好的代码编写习惯，同时采用margin-top或者同时采用margin-bottom。
+* ie6对png图片格式支持不好(引用一段脚本处理)
+
+10.iframe的优缺点？
+<!--1.<iframe>优点：-->
+    解决加载缓慢的第三方内容如图标和广告等的加载问题
+    Security sandbox
+    并行加载脚本
+<!--2.<iframe>的缺点：-->
+    *iframe会阻塞主页面的Onload事件；
+    *即时内容为空，加载也需要时间
+    *没有语意
+五、js
+1.js数据类型
+基本数据类型  string number boolean null undefined symbol
+基本数据类型（存放在栈内存中）
+基本数据类型是指存放在栈中的简单数据段，数据大小确定，内存空间大小可以分配，它们是直接按值存放的，所以可以直接按值访问
+
+引用数据类型  array object
+引用数据类型（存放在堆内存中的对象，每个空间大小不一样，要根据情况进行特定的配置）
+引用类型是存放在堆内存中的对象，变量其实是保存的在栈内存中的一个指针（保存的是堆内存中的引用地址），
+这个指针指向堆内存。
+引用类型数据在栈内存中保存的实际上是对象在堆内存中的引用地址。通过这个引用地址可以快速查找到保存中堆内存中的对象
+typeof "123"  => "string"
+typdof 123    => "number"
+typeof true   => "boolean"
+typeof null   => "object"
+typeof undefined  => "undefined"
+typeof [1,2,3]   => "object"
+typeof {name:'zs'}   => "object"
+typeof 函数 => "function"
+2. 判断数组和对象、JS中常用方法
+Array.isArray
+instanceof(instanceof是通过返回一个布尔值来指出，这个对象是否是这个特定类或者是它的子类的一个实例。)
+constructor
+
+Array下的常用方法：
+Array.map()将数组中的每个元素调用一个提供的函数，结果作为一个新的数组返回，并没有改变原来的数组
+Array.forEach()将数组中的每个元素执行传进提供的函数，没有返回值，直接改变原数组
+Array.filter()将所有元素进行判断，将满足条件的元素作为一个新的数组返回
+Array.push()在数组的后面添加新加元素，此方法改变了数组的长度
+Array.pop()在数组后面删除最后一个元素，并返回数组，此方法改变了数组的长度
+Array.shift()在数组后面删除第一个元素，并返回数组，此方法改变了数组的长度
+Array.unshift()将一个或多个元素添加到数组的开头，并返回新数组的长度
+Array.isArray()判断一个对象是不是数组，返回的是布尔值
+Array.concat()可以将多个数组拼接成一个数组
+Array.toString()将数组转化为字符串
+Array.splice(开始位置,删除的个数,此位置后添加的元素);万能方法，可以实现增删改
+
+String下的常用方法
+String.charCodeAt()方法返回一个整数，代表指定位置字符的Unicode编码
+String.fromCharCode()方法从一些Unicode字符串中返回一个字符串
+    例:String.fromCharCode(65,66,112);
+    结果：ABp
+String.charAt()方法返回指定索引位置处的字符。如果超出有效范围的索引值返回空字符串。
+    例如：
+    var str = "ABC";
+    str.charAt(1);
+    结果：B
+String.slice()方法返回字符串的片段。
+    例如：
+    012345
+    var str = "ABCDEF";
+    str.slice(2,4);
+    结果：CD
+String.substring()方法返回位于String对象中指定位置的子字符串。
+    例如：
+    012345
+    var str = "ABCDEF";
+    str.substr(2,4);
+    结果：CDEF
+String.indexOf()方法放回String对象内第一次出现子字符串位置。如果没有找到子字符串，则返回-1。
+    例如：
+    01234567
+    var str = "ABCDECDF";
+    str.indexOf("CD"，1); // 由1位置从左向右查找 123...
+    结果：2
+String.split()将一个字符串分割为子字符串，然后将结果作为字符串数组返回。
+    例如：
+    var str = "AA BB CC DD EE FF";
+    alert(str.split(" "，3));
+    结果：
+    AA,BB,CC
+2.类：具有相同的属性和方法的集合
+声明类 属性写在构造函数中
+方法写在原型下
+
+// var p1 = {
+//     name:'zs',
+//     age:20,
+//     say:function(){
+//         console.log('哈哈')
+//     }
+// }
+// 构造函数
+function Person(name,age){
+    this.name = name,
+        this.age = age
+    // this.say = function(){
+    //     console.log( this.name +"Hehe");
+    // }
+}
+// 原型  prototype
+/*
+prototype
+    函数有一个prototype属性，这个属性是一个指针 指向他的原型对象
+    原型对象下的属性和方法  可以被实例化对象所共享
+    原型下有一个constructor 属性指向他的构造函数
+
+__proto__
+原型链：
+当从一个对象那里调取属性或方法时，如果该对象自身不存在这样的属性或方法，
+就会去自己关联的prototype对象那里寻找，如果prototype没有，
+就会去prototype关联的前辈prototype那里寻找，
+如果再没有则继续查找Prototype.Prototype引用的对象，依次类推，
+直到Prototype.….Prototype为undefined（Object的Prototype就是undefined）
+从而形成了所谓的“原型链”。
+*/
+3.继承
+组合继承：
+优点：
+可以继承实例属性/方法，也可以继承原型属性/方法
+既是子类的实例，也是父类的实例
+不存在引用属性共享问题
+可传参
+函数可复用
+缺点：调用了两次父类构造函数，生成了两份实例（子类实例将子类原型上的那份屏蔽了）
+function Person(name,age){
+this.name = name;
+this.age = age;
+}
+Person.prototype.say = function(){
+console.log(this.name +"haha");
+}
+function Coder(name,age){
+// this
+// 调用父类的Person.call()   继承属性
+Person.call(this,name,age);
+}
+// 继承父类的方法
+Coder.prototype = new Person();
+// Coder的原型对象下的constructor属性 指向 Coder
+Coder.prototype.constructor = Coder;
+var c1 = new Coder('lisi',20);
+c1.say();
+
+寄生组合继承：
+// 定义一个动物类
+function Animal (name) {
+// 属性
+this.name = name || 'Animal';
+// 实例方法
+this.sleep = function(){
+console.log(this.name + '正在睡觉！');
+}
+}
+// 原型方法
+Animal.prototype.eat = function(food) {
+console.log(this.name + '正在吃：' + food);
+};
+
+function Cat(name){
+Animal.call(this);
+this.name = name || 'Tom';
+}
+(function(){
+// 创建一个没有实例方法的类
+var Super = function(){};
+Super.prototype = Animal.prototype;
+//将实例作为子类的原型
+Cat.prototype = new Super();
+})();
+
+4.改变this指向（谁调用这个函数，this就是谁） and setInterval与setTimeout的区别
+将aa中的this指向括号中的第一个参数
+aa.call(this,1,2,3)
+aa.apply(this,[1,2,3])
+apply() 与call（）非常相似，不同之处在于提供参数的方式,apply（）使用参数数组，而不是参数列表
+aa.bind(this,1,2,3)
+bind()创建的是一个新的函数（称为绑定函数），与被调用函数有相同的函数体，
+
+setInterval与setTimeout的区别：
+setTimeout()方法只运行一次，也就是说当达到设定的时间后就出发运行指定的代码，运行完后就结束了，
+如果还想再次执行同样的函数，可以在函数体内再次调用setTimeout()，可以达到循环调用的效果。
+
+setInterval()是循环执行的，即每达到指定的时间间隔就执行相应的函数或者表达式，是真正的定时器。
+用setTimeout实现setInterval:
+function ff(fun,delay){
+    setTimeout(function(){
+        fun();
+        ff(fun,delay);
+    },delay);
+}
+5.事件
+(1)概念
+事件：怎么触发这个事情  （一般是动词，触发事件，比如点击开关）
+事件处理函数：怎么触发这个事情  （一般是动词，触发事件，比如点击开关）
+事件源：要触发的对象  （一般是名词，事件发起者，比如开关按钮）
+<!--
+<div id="div1">
+    div1
+    <div id="div2">
+        div2
+    </div>
+</div>
+!-->
+var oDiv = document.getElementById('div1');
+oDiv.onclick = function(e){
+console.log('dfghjk');
+// 事件源
+console.log(e.target);
+// this 对当前对象引用
+console.log(this);
+}
+(2)事件冒泡和捕获
+冒泡：（自底向上）触发顺序一样
+捕获：（自顶向下）触发顺序一样
+同时有冒泡和捕获的时候  先捕获 再冒泡 （先从外到里，再从里往外）
+阻止事件冒泡:
+e.stopPropagation();
+e.cancelBubble = true;//ie
+阻止默认行为:
+return false;
+e.preventDefault();
+e.returnValue = false;
+<!--
+<div id="div1">
+    div1
+    <div id="div2">
+        div2
+    </div>
+</div>
+<a href="http:www.baidu.com" id="btn">baidu</a>
+-->
+var oDiv1 = document.getElementById('div1');
+var oDiv2 = document.getElementById('div2');
+var oBtn = document.getElementById('btn');
+oDiv1.onclick = function(e){
+console.log('div1 click');
+}
+oDiv2.onclick = function(e){
+console.log('div2 click');
+// 阻止事件冒泡
+e.stopPropagation();
+// ie
+e.cancelBubble = true;
+}
+oBtn.onclick = function(e){
+console.log('dfghjkl;');
+// 阻止默认行为
+// return false;
+e.preventDefault();
+e.returnValue = false;
+}
+
+// 捕获true 或 冒泡false
+// oDiv1.addEventListener('click',function(){
+//     console.log('div1 click2');
+// },false);
+(3)事件委托：
+后生成元素的事件绑定问题
+解决：
+<!--
+<button id="btn">click</button>
+<ul id="ul1">
+    <li>11111</li>
+    <li>22222</li>
+    <li>33333</li>
+</ul>
+!-->
+var aLi = document.getElementsByTagName('li');
+var oBtn = document.getElementById('btn');
+var oUl = document.getElementById('ul1');
+<!-- for(var i=0; i<aLi.length; i++){!-->
+//     aLi[i].onclick = function(){
+//         console.log(this.innerHTML);
+//     }
+// }
+oBtn.onclick = function(){
+    var oLi = document.createElement('li');
+    oLi.innerHTML = Math.random();
+    oUl.appendChild(oLi);
+}
+将事件绑定已存在的父元素上，当点击子元素的时候，通过事件冒泡 ，事件会冒泡到父元素身上
+oUl.onclick = function(e){
+    // console.log(e.target.tagName)
+    if(e.target.tagName == "LI"){
+    console.log(e.target.innerHTML);
+    }
+}
+6.闭包
+链式作用域
+内部函数访问外部函数的变量
+var aLi = document.getElementsByTagName('li');
+<!--// for(var i=0; i<aLi.length; i++){-->
+//     (function(i){
+//         // i是外部函数中的参数
+//         aLi[i].onclick = function(){
+//             console.log(i);
+//         }
+//     })(i);
+// }
+// 块级作用域
+<!--// for(let i=0; i<aLi.length; i++){-->
+//     aLi[i].onclick = function(){
+//         console.log(i);
+//     }
+// }
+// aLi.map(function(ele,index){
+//     ele.onclick = function(){
+//         console.log(index);
+//     }
+// })
+7.函数节流
+一个函数执行一次后，只有大于设定的执行周期后才执行第二次
+有个需要频繁触发的函数 出于优化性能角度，在规定时间内，
+只让函数触发第一次生效，后面不生效
+
+// 闭包  this
+function throttle(fn,delay){
+var startTime = 0;
+return function(){
+var nowTime = Date.now();
+if(nowTime - startTime > delay){
+fn.call(this);
+startTime = nowTime;
+}
+}
+}
+// document.onmousemove = function(){
+//     throttle(function(){
+//         console.log(Date.now());
+//     },3000);
+// }
+document.onmousemove = throttle(function(){
+console.log(Date.now())
+console.log(this);
+},1000);
+// document.onmousemove = function(){
+//     console.log(Date.now())
+//     // this
+// }
+
+8.函数防抖
+函数去抖
+一个需要频繁触发的函数，在规定时间内只让最后一次生效，前面的不生效
+比如 搜索
+
+function debounce(fn,delay) {
+var timer = null;
+return function(){
+clearTimeout(timer);
+
+timer = setTimeout(() => {
+fn.apply(this);
+},delay);
+}
+}
+var oBtn = document.getElementById('btn');
+oBtn.onclick = debounce(function(){
+console.log(Date.now());
+console.log(this);
+},300);
+// oBtn.onclick = function () {
+//     console.log(Date.now());
+// }
+
+9.ajax
+//创建 XMLHttpRequest 对象
+var xmlhttp;
+if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+xmlhttp = new XMLHttpRequest();
+} else { // code for IE6, IE5
+xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+}
+// 向服务器发送请求  请求方式  url 是否异步
+xmlhttp.open("GET", "test1.txt?name=zs", true);
+xmlhttp.send();
+// post  请求方式  url  是否异步
+xmlhttp.open("POST","ajax_test.asp",true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("fname=Bill&lname=Gates");
+// 服务器响应
+xmlhttp.onreadystatechange = function () {
+if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+console.log(xmlhttp.responseText);
+}
+}
+/*
+存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
+0: 请求未初始化
+1: 服务器连接已建立
+2: 请求已接收
+3: 请求处理中
+4: 请求已完成，且响应已就绪
+*/
+/*
+status
+200   (“OK”)  成功 一切正常
+500   服务期方面的问题
+503 （服务不可用）
+404   找不到资源
+301  永久重定向
+302  临时重定向
+304  缓存
+
+六、jquery原理
+function $(str){
+return new Jquery(str);
+}
+function Jquery(str){
+this.eles = [];
+var sel = str.charAt(0);
+var name = str.substr(1);
+if(sel == "#"){
+this.eles.push(document.getElementById(name));
+}else if(sel == "."){
+// this.eles.concat(document.getElementsByClassName(name));
+// this.eles = [...document.getElementsByClassName(name)];
+this.eles = document.getElementsByClassName(name);
+}
+}
+Jquery.prototype.css = function(arg1,arg2){
+// cosnole.log()
+if(typeof arg1 == "string" && typeof arg2 == "string"){
+this.eles.map(function(ele,index){
+ele.style[arg1] = arg2;
+})
+}else if(typeof arg1 == "object" && arg2 == undefined){
+this.eles.map(function(ele,index){
+for(key in arg1){
+//将每一个元素的 arg1[key]属性 设置成
+ele.style[key] = arg1[key];
+}
+})
+}
+return this;
+}
+Jquery.prototype.on = function(eventName,handle){
+this.eles.map(function(ele,index){
+ele.addEventListener(eventName,handle);
+})
+return this;
+}
+// $("#div1").css("background","red");
+$("#div1").css({
+background:"red",
+height:"100px"
+}).on('click',function(){
+console.log('hahah')
+});
+1.什么是JQuery?
+JQuery是一个优秀的javascript框架。
+JQuery是继Prototype之后又一个优秀的Javascript框架。其宗旨是——WRITE LESS,DO MORE,写更少的代码,
+做更多的事情。它是轻量级的js库，这是其它的js库所不及的，它兼容CSS3，还兼容各种常用浏览器。
+JQuery是一个快速的，简洁的JavaScript库，使用户能更方便地处理HTML documents、events、实现动画效果，
+并且方便地为网站提供AJAX交互。
+JQuery还有一个比较大的优势是，它的文档说明很全，而且各种应用也说得很详细，同时还有许多成熟的插件可供选择。
+JQuery能够使用户的html页保持代码和html内容分离，也就是说，不用再在html里面插入一堆js来调用命令了，
+只需定义id即可。
+
+2.JQuery的特点
+(1).一款轻量级的js框架。
+JQuery核心js文件才几十kb，不会影响页面加载速度。与Extjs相比要轻便的多。
+(2).丰富的DOM选择器(CSS1-3 + XPath)
+JQuery的选择器用起来很方便，好比要找到某个dom对象的相邻元素js可能要写好几行代码，而JQuery一行代码就搞定了，
+再比如要将一个表格的隔行变色，JQuery也是一行代码搞定。
+(3).链式表达式。
+JQuery的链式操作可以把多个操作写在一行代码里，更加简洁。
+(4).事件、样式、动画支持。
+JQuery还简化了js操作css的代码，并且代码的可读性也比js要强。
+(5).Ajax操作支持。
+JQuery简化了AJAX操作，后台只需返回一个JSON格式的字符串就能完成与前台的通信。
+(6).跨浏览器兼容。
+JQuery基本兼容了现在主流的浏览器，不用再为浏览器的兼容问题而伤透脑筋。
+(7).插件扩展开发。
+JQuery有着丰富的第三方的插件，例如：树形菜单、日期控件、图片切换插件、弹出窗口等等基本前台页面上的组件都有对
+应插件，并且用JQuery插件做出来的效果很炫，并且可以根据自己需要去改写和封装插件，简单实用。
+(8).可扩展性强。
+JQuery提供了扩展接口：JQuery.extend(object),可以在JQuery的命名空间上增加新函数。JQuery的所有插件都
+是基于这个扩展接口开发的。
+
+3.JQuery的优缺点
+(1).JQuery优点
+<1>.JQuery实现脚本与页面的分离
+在HTML代码中，我们还经常看到类似这样的代码：
+<!--/*<form id="myform" onsubmit=return validate();">*/-->
+即使validate()函数可以被放置在一个外部文件中，实际上我们依然是把页面与逻辑和事件混杂在一起。jQuery让你
+可以将这两部分分离。借助于jQuery，页面代码将如下所示：
+<!--<form id="myform"> 接下来，一个单独的JS文件将包含以下事件提交代码：-->
+$("myform").submit(function(){
+...your code here
+)}
+这样我们可以实现灵活性非常强的清晰页面代码。jQuery让JavaScript代码从HTML页面代码中分离出来，就像数
+年前CSS让样式代码与页面代码分离开一样。
+<2>.最少的代码做最多的事情
+最少的代码做最多的事情，这是jQuery的口号，而且名副其实。使用它的高级selector，开发者只需编写几行代码
+就能实现令人惊奇的效果。开发者无需过于担忧浏览器差异，它除了还完全支持Ajax，而且拥有许多提高开发者编程
+效率的其它抽象概念。jQuery把JavaScript带到了一个更高的层次。以下是一个非常简单的示例：
+$("p.neat").addClass("ohmy").show("slow");
+通过以上简短的代码，开发者可以遍历“neat”类中所有的p元素，然后向其增加“ohmy”类，同时以动画效果缓缓
+显示每一个段落。开发者无需检查客户端浏览器类型，无需编写循环代码，无需编写复杂的动画函数，仅仅通过
+一行代码就能实现上述效果。
+<3>.性能支持比较好
+在大型JavaScript框架中，jQuery对性能的理解最好。尽管不同版本拥有众多新功能，其最精简版本只有
+18KB大小，这个数字已经很难再减少。jQuery的每一个版本都有重大性能提高。如果将其与新一代具有更快
+JavaScript引擎的浏览器(如火狐3和谷歌Chrome)配合使用，开发者在创建富体验Web应用时将拥有全新速度优势。
+<4>.它是一个“标准”
+之所以使用引号，是以为jQuery并非一个官方标准。但是业内对jQuery的支持已经非常广泛。谷歌不但自己使用它，
+还提供给用户使用。另外戴尔、新闻聚合网站Digg、WordPress、Mozilla和许多其它厂商也在使用它。微软甚至
+将它整合到Visual Studio中。如此多的重量级厂商支持该框架，用户大可以对其未来放心，大胆的对其投入时间。
+<5>.插件发开
+基于jQuery开发的插件目前已经有大约数千个。开发者可使用插件来进行表单确认、图表种类、字段提示、动画、
+进度条等任务。jQuery社区已经成长为一个生态系统。这一点进一步证明了上一条理由，它是一个安全的选择。而且，
+jQuery正在主动与“竞争对手”合作，例如Prototype。它们似乎在推进JavaScript的整体发展，而不仅仅是在图谋一己之私。
+<6>.节约学习成本
+当然要想真正学习jQuery，开发者还是需要投入一点时间，尤其是如果要编写大量代码或自主插件的话，更是如此。
+但是，开发者可以采取“各个击破”的方式，而且jQuery提供了大量示例代码，入门是一件非常容易的事情。建议开
+发者在编写某类代码前，首先看一下是否有类似插件，然后看一下实际的插件代码，了解一下其工作原理。简而言之，
+学习jQuery不需要开发者投入太多，就能够迅速开始开发工作，然后逐渐提高技巧。
+<7>.让JS编程变得有趣
+发现使用jQuery是一件充满乐趣的事情。它简洁而强大，开发者能够迅速得到自己想要的结果。它解决了许多
+JavaScript问题和难题。通过一些基础性的改进，开发者可以真正去思考开发下一代Web应用，不再因为语言或工具
+的差劲而烦恼。相信它的“最少的代码做最多的事情”口号。
+
+(2).JQuery的缺点
+<1>.不能向后兼容。
+每一个新版本不能兼容早期的版本。举例来说，有些新版本不再支持某些selector，新版jQuery却没有保留对它们的支持，
+而只是简单的将其移除。这可能会影响到开发者已经编写好的代码或插件。
+<2>.插件兼容性。
+与上一点类似，当新版jQuery推出后，如果开发者想升级的话，要看插件作者是否支持。通常情况下，在最新版jQuery版本下，
+现有插件可能无法正常使用。开发者使用的插件越多，这种情况发生的几率也越高。我有一次为了升级到jQuery 1.3，不得
+不自己动手修改了一个第三方插件。
+<3>.多个插件冲突。
+在同一页面上使用多个插件时，很容易碰到冲突现象，尤其是这些插件依赖相同事件或selector时最为明显。这虽然不是
+jQuery自身的问题，但却又确实是一个难于调试和解决的问题。
+<4>.jQuery的稳定性。
+jQuery没有让浏览器崩溃，这里指的是其版本发布策略。jQuery 1.3版发布后仅过数天，就发布了一个漏洞修正版1.3.1。
+他们还移除了对某些功能的支持，可能会影响许多代码的正常运行。我希望类似修改不要再出现。
+<5>.对动画和特效的支持差。
+在大型框架中，jQuery核心代码库对动画和特效的支持相对较差。但是实际上这不是一个问题。目前在这方面有一个单独的
+jQuery UI项目和众多插件来弥补此点。
+
+4.JQuery使用方法
+(1).JQuery选择器
+选择网页元素jQuery的基本设计和主要用法，就是"选择某个网页元素，然后对其进行某种操作"。这是它区别于其他函
+数库的根本特点。
+使用jQuery的第一步，往往就是将一个选择表达式，放进构造函数jQuery()(简写为$)，然后得到被选中的元素。
+(2).改变结果集
+如果选中多个元素，jQuery提供过滤器，可以缩小结果集；有一些时候，我们需要从结果集出发，移动到附近的相关元素，
+jQuery也提供了在DOM树上的移动方法。
+(3).链式操作
+选中网页元素以后，就可以对它进行某种操作。jQuery允许将所有操作连接在一起，以链条的形式写出来。
+这是jQuery最令人称道、最方便的特点。它的原理在于每一步的jQuery操作，返回的都是一个jQuery对象，所以不同操
+作可以连在一起。
+(4).元素的操作：取值和赋值
+操作网页元素，最常见的需求是取得它们的值，或者对它们进行赋值。
+jQuery使用同一个函数，来完成取值(getter)和赋值(setter)。到底是取值还是赋值，由函数的参数决定。
+需要注意的是，如果结果集包含多个元素，那么赋值的时候，将对其中所有的元素赋值;取值的时候，则是只取出第一个元
+素的值(.text()例外，它取出所有元素的text内容)。
+(5).元素的操作：移动
+如果要移动选中的元素，有两种方法：一种是直接移动该元素，另一种是移动其他元素，使得目标元素达到我们想要的位置。
+(6).元素的操作：复制、删除和创建
+复制元素使用.clone()。
+删除元素使用.remove()和.detach()。两者的区别在于，前者不保留被删除元素的事件，后者保留，有利于重新插入文档
+时使用。
+清空元素内容(但是不删除该元素)使用.empty()。
+(7).工具方法
+除了对选中的元素进行操作以外，jQuery还提供一些工具方法(utility)，不必选中元素，就可以直接使用。
+如果你懂得Javascript语言的继承原理，那么就能理解工具方法的实质。它是定义在jQuery构造函数上的方法，即jQuery.method()，所以可以直接使用。而那些操作元素的方法，是定义在构造函数的prototype对象上的方法，即jQuery.prototype.method()，所以必须生成实例(即选中元素)后使用。如果不理解这种区别，问题也不大，只要把工具方法理解成，是像javascript原生函数那样，可以直接使用的方法就行了。
+(8).事件操作
+jQuery可以对网页元素绑定事件。根据不同的事件，运行相应的函数。
+(9).特殊效果
+jQuery允许对象呈现某些特殊动画效果。
+
+七、CSS3
+
+八、ES6
+
+1.let和var const区别
+（1）不存在变量提升（在当前作用域的最上边定义了一个变量，没有赋值）
+（2）不允许重复声明
+//let b = 20;
+// let b = 30;
+（3）有暂时性死区
+let c = 10;
+// function fn2(){
+//     console.log(c);
+//     let c = 30;
+//     // console.log(c);
+// }
+// fn2();
+（4）块级作用域
+ES5只有全局作用域和函数作用域
+
+2.箭头函数
+箭头函数this指向父作用域的this (声明时的this) 普通函数中的this指向 调用时的this
+(1)函数体内的this对象，就是定义时所在的对象，而不是使用
+时所在的对象。
+(2)不可以当作构造函数，也就是说，不可以使用new命令，否
+则会抛出一个错误。
+(3)不可以使用arguments对象，该对象在函数体内不存在。如
+果要用，可以用 rest 参数代替。
+注释：了解arguments这个对象之前先来认识一下javascript的一些功能：
+其实Javascript并没有重载函数的功能， 但是Arguments对象能够模拟重载
+Javascrip中每个函数都会有一个Arguments对象实例arguments，
+它引用着函数的实参，可以用数组下标的方式"[]"引用arguments的元素，
+arguments.length为函数实参个数，arguments.callee引用函数自身。
+
+3.解构和扩展运算符
+（1）解构
+解构的作用是可以快速取得数组或对象当中的元素或属性，
+而无需使用arr[x]或者obj[key]等传统方式进行赋值
+var arr = ['this is a string', 2, 3];
+//传统方式
+var a = arr[0],
+b = arr[1],
+c = arr[2];
+//解构赋值
+var [a, b, c] = arr;
+（2）扩展运算符
+扩展运算符用三个点号表示，功能是把数组或类数组对象展开成一系列用逗号隔开的值
+var foo = function(a, b, c) {
+console.log(a);
+console.log(b);
+console.log(c);
+}
+
+var arr = [1, 2, 3];
+
+//传统写法
+foo(arr[0], arr[1], arr[2]);
+
+//使用扩展运算符
+foo(...arr);
+//1
+//2
+//3
+
+4.promise
+Promise 是异步编程的一种解决方案，将异步操作以同步
+操作的流程表达出来，避免了层层嵌套的回调函数（俗称回调
+地狱）
+一个promise可能有三种状态：pending（进行中）、fulfilled（已成功）和
+rejected（已失败）
+一个promise的状态只可能从“等待”转到“成功”态或者“失败”态，不能逆
+向转换，同时“成功”态和“失败”态不能相互转换
+成功调用resolve()，失败调用reject()
+Promise.all() 都执行完 再执行, Promise.race() 最快的那个执行完了就执行 ；
+
+// $.get(function(data){
+//     $.get(function(data){
+//         $.get(function(data){
+//         })
+//     })
+// })
+// let p1 = new Promise(function(resolve,reject){
+//     setTimeout(() => {
+//         console.log(1111)
+//         resolve();
+//     }, 2000);
+// }).then(function(){
+//     return new Promise(function(resolve,reject){
+//         console.log(222+"开始");
+//         setTimeout(() => {
+//             console.log(222+"成功")
+//             resolve();
+//         }, 1000);
+//     })
+// },function(){
+// }).then(function(){
+//     console.log('成功');
+// })
+// .catch(function(){
+// })
+let p1 = new Promise(function(resolve,reject){
+setTimeout(() => {
+console.log(11111)
+resolve(1111);
+}, 1000);
+// setTimeout(resolve, 1000);
+})
+let p2 = new Promise(function(resolve,reject){
+setTimeout(() => {
+console.log(2222)
+reject(2222);
+}, 3000);
+// setTimeout(resolve, 1000);
+})
+let p3 = new Promise(function(resolve,reject){
+setTimeout(() => {
+console.log(333)
+resolve(3333);
+}, 500);
+// setTimeout(resolve, 1000);
+})
+// Promise.all([p1,p2,p3]).then(function(result){
+//     console.log(result);
+// })
+Promise.race([p1,p2,p3]).then(function(xx){
+// console.log(xx);
+console.log('okoko');
+})
+
+九、vue
+1.常用指令
+v-for 循环
+v-text v-html 识别标签
+v-on 绑定事件
+v-model 双向数据绑定
+v-bind: 绑定属性
+v-if v-else v-else-if html结构中是没有的
+v-show false相当于display是none
+
+v-show和v-if指令的共同点和不同点?
+v-show指令是通过修改元素的displayCSS属性让其显示或者隐藏
+v-if指令是直接销毁和重建DOM达到让元素显示和隐藏的效果
+如何让CSS只在当前组件中起作用?
+<!--将当前组件的<style>修改为<style scoped>-->
+<!--<keep-alive></keep-alive>!--> 包裹动态组件时，会缓存不活动的组件实例,主要用于保留组件状态或避免重新渲染。
+Vue中引入组件的步骤?
+1.采用ES6的import ... from ...语法或CommonJS的require()方法引入组件
+2.对组件进行注册,代码如下
+// 注册
+Vue.component('my-component', {
+template: '<div>A custom component!</div>'
+})
+
+vuex:
+Vuex可以被看作项目中所有组件的数据中心,我们将所有组件中共享的State抽离出来,任何组件都可以访问和操作我们的数据中心.
+
+state中保存着共有数据
+改变state中的数据有且只有通过mutations中的方法,且mutations中的方法必须是同步的
+如果要写异步的方法,需要些在actions中, 并通过commit到mutations中进行state中数据的更改.
+
+2.生命周期
+
+beforeCreate（新对象诞生）
+Vue对象用新方法实例化。它创建一个Vue类的对象来处理DOM元素。对象的这个生命阶段可以通过beforeCreated 挂钩来访问 。
+我们可以在这个钩子中插入我们的代码，在对象初始化之前执行。
+
+created创建（具有默认特性的对象）
+在这个生命阶段，对象及其事件完全初始化。 created 是访问这个阶段并编写代码的钩子。
+
+
+beforeMounted（对象在DOM中适合形状）
+这个钩子被调用 beforeMounted。在这个阶段，它检查是否有任何模板可用于要在DOM中呈现的对象。如果没有找到模板，那么它将所定义元素的外部HTML视为模板。
+
+mounted已安装（DOM已准备就绪并放置在页面内）
+一旦模板准备就绪。它将数据放入模板并创建可呈现元素。用这个新的数据填充元素替换DOM元素。这一切都发生在mounted钩子上。
+
+beforeUpdate（更改已完成，但尚未准备好更新DOM）
+在外部事件/用户输入beforeUpdate发生更改时，此钩子即 在反映原始DOM元素的更改之前被触发。
+为了解决这个问题 beforeUpdated，我添加了下面的代码。它通过更新DOM来更改运行时中的hello_message。
+// To fire updatev1.$data.hello_message="New message";
+
+updated更新（在DOM中呈现的更改）
+然后，通过实际更新DOM对象并触发updated，屏幕上的变化得到呈现 。
+
+beforeDestroy（对象准备死掉）
+就在Vue对象被破坏并从内存中释放之前， deforeDestroy 钩子被触发，并允许我们在其中处理我们的自定义代码。
+为了激发这个钩子，我添加了下面的代码来销毁Vue对象。
+//这可以被调用来销毁该对象，这将触发销毁钩v1.$ destroy（）;
+
+销毁（对象停止并从内存中删除）
+该 destroyed 钩子被成功运行销毁对象上调用。
+
+3.组件传值
+
+父组件向子组件传值成功:
+(1)子组件在props中创建一个属性，用以接收父组件传过来的值
+(2)父组件中注册子组件
+(3)在子组件标签中添加子组件props中创建的属性
+(4)把需要传给子组件的值赋给该属性
+
+子组件向父组件传值成功:
+(1)子组件中需要以某种方式例如点击事件的方法来触发一个自定义事件
+(2)将需要传的值作为$emit的第二个参数，该值将作为实参传给响应自定义事件的方法
+(3)在父组件中注册子组件并在子组件标签上绑定对自定义事件的监听
+
+4.计算属性computed、watch区别
+
+computed只要值变化，就重新计算
+watch一次只可以监听一个值
+
+5.vuex
+
+state访问状态对象 存值
+mutations修改状态 修改值（通过调用commit（方法名,参数）方法访问mutations中方法）
+getters计算过滤操作 相当于计算属性
+actions异步修改状态
+
+Vuex的组成,一个实例化的Vuex.Store由state, mutations和actions三个属性组成:
+
+state中保存着共有数据
+改变state中的数据有且只有通过mutations中的方法,且mutations中的方法必须是同步的
+如果要写异步的方法,需要些在actions中, 并通过commit到mutations中进行state中数据的更改.
+
+6.双向数据绑定
+实现mvvm的双向绑定，就必须要实现以下
+1、实现一个数据监听器Observer，通过
+Object.defineProperty()来实现对属性的劫
+持，能够对数据对象的所有属性进行监听，
+如有变动可拿到最新值并通知订阅者
+2、实现一个指令解析器Compile，对每个
+元素节点的指令进行扫描和解析，根据指令
+模板替换数据，以及绑定相应的更新函数
+3、实现一个Watcher，作为连接Observer
+和Compile的桥梁，能够订阅并收到每个属
+性变动的通知，执行指令绑定的相应回调函
+数，从而更新视图
+4、mvvm入口函数，整合以上三者
+除了Object.defineProperty()，es6中还有个proxy实现监听
+
+十、react
+
+1.组件定义
+函数和class
+
+2.组件传值props
+父向子props
+子向父
+
+3.state
+this.state.msg
+this.setState修改值
+
+4.ref获取DOM元素
+
+5.生命周期
+constructor初始化
+componentWillMount将要挂载
+render渲染挂载
+componentDidMount渲染完毕
+componentWillReceiveProps组件发生改变
+
+十一、webpack部分
+webpack只是一个打包模块的机制，只是把依赖的模块转化成可以代表这些包的静态文件。
+并不是什么commonjs或者amd之类的模块化规范。webpack就是识别你的 入口文件。
+识别你的模块依赖，来打包你的代码。至于你的代码使用的是commonjs还是amd或者es6的import。
+webpack都会对其进行分析。来获取代码的依赖。webpack做的就是分析代码。转换代码，
+编译代码，输出代码。webpack本身是一个node的模块，所以webpack.config.js是以
+commonjs形式书写的(node中的模块化是commonjs规范的)webpack中每个模块有一个唯一的id，
+是从0开始递增的。整个打包后的bundle.js是一个匿名函数自执行。参数则为一个数组。
+数组的每一项都为个function。function的内容则为每个模块的内容，并按照require的顺序排列。
+
+我们的webpack进行识别后打包的内容不会相差很多，webpack有优秀的语法分析能力，支持 CommonJs AMD 等规范。
+webpack为什么能把任何形式的资源都视作模块呢？因为loader机制。不同的资源采用不同的loader进行转换。
+CMD、AMD 、import、css 、等都有相应的loader去进行转换。那为什么我们平时写的es6的模块机制，
+不用增加import的loader呢。因为我们使用了babel把import转换成了require。并且Webpack2
+将增加对 ES6 模块的原生支持并且混用 ES6、AMD 和 CommonJS 模块。这意味着 Webpack 现在可以
+识别 import 和 export 了，不需要先把它们转换成 CommonJS 模块的格式：Webpack 2 有哪些
+新东西webpack对于es模块的实现，也是基于自己实现的webpack_require 和webpack_exports ，
+装换成类似于commonjs的形式。es6 module是静态的依赖,所以在运行前进行代码转换,这里的实现是将所有
+导出项作为一个对象的属性,在入口文件执行时,去递归的加载模块。
+
+如何实现一个简单的webpack
+读取文件分析模块依赖
+对模块进行解析执行(深度遍历)
+针对不同的模块使用相应的loader
+编译模块，生成抽象语法树AST。
+循环遍历AST树，拼接输出js。
+
+loader原理
+在解析对于文件，会自动去调用响应的loader,loader 本质上是一个函数，输入参数是一个字符串，输出参数
+也是一个字符串。当然，输出的参数会被当成是 JS 代码，从而被 esprima 解析成 AST，触发进一步的依赖
+解析。webpack会按照从右到左的顺序执行loader。
+
+十二、虚拟DOM
+为什么虚拟dom会提高性能?
+
+虚拟dom相当于在js和真实dom中间加了一个缓存，利用dom diff算法避免了没有必要的dom操作，从而提高性能。
+
+具体实现步骤如下：
+
+用 JavaScript 对象结构表示 DOM 树的结构；然后用这个树构建一个真正的 DOM 树，插到文档当中
+
+当状态变更的时候，重新构造一棵新的对象树。然后用新的树和旧的树进行比较，记录两棵树差异
+
+把2所记录的差异应用到步骤1所构建的真正的DOM树上，视图就更新了。
+
+vue核心之虚拟DOM(vdom)
+真实DOM和其解析流程？
+浏览器渲染引擎工作流程都差不多，大致分为5步，创建DOM树——创建StyleRules——创建Render树——布局
+Layout——绘制Painting
+第一步，用HTML分析器，分析HTML元素，构建一颗DOM树(标记化和树构建)。
+第二步，用CSS分析器，分析CSS文件和元素上的inline样式，生成页面的样式表。
+第三步，将DOM树和样式表，关联起来，构建一颗Render树(这一过程又称为Attachment)。每个DOM节点都有
+attach方法，接受样式信息，返回一个render对象(又名renderer)。这些render对象最终会被构建成一颗Render树。
+第四步，有了Render树，浏览器开始布局，为每个Render树上的节点确定一个在显示屏上出现的精确坐标。
+第五步，Render树和节点显示坐标都有了，就调用每个节点paint方法，把它们绘制出来。
+
+DOM树的构建是文档加载完成开始的？构建DOM数是一个渐进过程，为达到更好用户体验，渲染引擎会尽快将内容显示
+在屏幕上。它不必等到整个HTML文档解析完毕之后才开始构建render数和布局。
+
+Render树是DOM树和CSSOM树构建完毕才开始构建的吗？这三个过程在实际进行的时候又不是完全独立，而是会有交叉。
+会造成一边加载，一遍解析，一遍渲染的工作现象。
+
+CSS的解析是从右往左逆向解析的(从DOM树的下－上解析比上－下解析效率高)，嵌套标签越多，解析越慢。
+
+webkit渲染引擎工作流程
+JS操作真实DOM的代价！
+用我们传统的开发模式，原生JS或JQ操作DOM时，浏览器会从构建DOM树开始从头到尾执行一遍流程。在一次操作中，
+我需要更新10个DOM节点，浏览器收到第一个DOM请求后并不知道还有9次更新操作，因此会马上执行流程，最终执行10次。
+例如，第一次计算完，紧接着下一个DOM更新请求，这个节点的坐标值就变了，前一次计算为无用功。计算DOM节点坐标值
+等都是白白浪费的性能。即使计算机硬件一直在迭代更新，操作DOM的代价仍旧是昂贵的，频繁操作还是会出现页面卡顿，
+影响用户体验。
+
+为什么需要虚拟DOM，它有什么好处?
+Web界面由DOM树(树的意思是数据结构)来构建，当其中一部分发生变化时，其实就是对应某个DOM节点发生了变化，
+
+虚拟DOM就是为了解决浏览器性能问题而被设计出来的。如前，若一次操作中有10次更新DOM的动作，虚拟DOM不会立即
+操作DOM，而是将这10次更新的diff内容保存到本地一个JS对象中，最终将这个JS对象一次性attch到DOM树上，再进行
+后续操作，避免大量无谓的计算量。所以，用JS对象模拟DOM节点的好处是，页面的更新可以先全部反映在JS对象(虚拟DOM)上，
+操作内存中的JS对象的速度显然要更快，等更新完成后，再将最终的JS对象映射成真实的DOM，交由浏览器去绘制。
+
+十三、vue 和jQuery区别
+jQuery是使用选择器（$）选取DOM对象，对其进行赋值、取值、事件绑定等操作，其实和原生的HTML的区别只在于可以更
+方便的选取和操作DOM对象，而数据和界面是在一起的。比如需要获取label标签的内容：$("lable").val();,它还是
+依赖DOM元素的值。
+
+Vue则是通过Vue对象将数据和View完全分离开来了。对数据进行操作不再需要引用相应的DOM对象，可以说数据和View
+是分离的，他们通过Vue对象这个vm实现相互的绑定。这就是传说中的MVVM
+
+十四、网络
+（一）到底发生了什么?
+当你在浏览器里输入一个网址时（在我们的例子里就是走向商店的路上时）:
+1. 浏览器在域名系统服务器上找出存放网页的服务器的实际地址（找出商店的位置）
+2. 浏览器发送 HTTP 请求信息到服务器来请拷贝一份网页到客户端（你走到商店并下订单）。这条消息，包括其他所有在
+客户端和服务器之间传递的数据都是通过互联网使用 TCP/IP 协议传输的
+3. 服务器同意客户端的请求后，会返回一个“200 OK”信息，意味着“你可以查看这个网页，给你～”，然后开始将网页的
+文件以数据包的形式传输到浏览器（商店给你商品，你将商品带回家）
+4. 浏览器将数据包聚集成完整的网页然后将网页呈现给你（商品到了你的门口 —— 新东西，好棒！）
+
+DNS解析
+真正的网址看上去并不像你输入的那样美好、容易记忆。它们是一串数字，像 63.245.217.105。
+
+这叫做 IP 地址，它代表了一个互联网上独特的位置。然而，它并不容易记忆，不是吗？那就是域名系统被发明的原因。
+它们是将你输入浏览器的地址与实际 IP 地址相匹配的特殊的服务器（像 “mozilla.org”）。
+
+网页可以通过 IP地址直接访问。试试通过输入 63.245.217.105 来访问 Mozilla网站。能准确访问的IP是：
+63.245.215.20。
+
+数据包解析
+前面我们用“包”来描述了数据从服务器到客户端传输的格式。这是什么意思？基本上，当数据在Web上传输时，是以成千上
+万的小 数据块 的形式传输的。大量不同的用户都可以在同时下载同一个网页。如果网页以单个大的 数据块 形式传输，
+一次就只有一个用户下载，无疑会让Web非常没有效率并且失去很多乐趣
+
+（二）一次完整的HTTP请求过程
+当我们在web浏览器的地址栏中输入： www.baidu.com，然后回车，到底发生了什么
+
+过程概览
+　　1.对www.baidu.com这个网址进行DNS域名解析，得到对应的IP地址
+
+　　2.根据这个IP，找到对应的服务器，发起TCP的三次握手
+
+　　3.建立TCP连接后发起HTTP请求
+
+　　4.服务器响应HTTP请求，浏览器得到html代码
+
+　　5.浏览器解析html代码，并请求html代码中的资源（如js、css图片等）（先得到html代码，才能去找这些资源）
+
+　　6.浏览器对页面进行渲染呈现给用户
+
+注：1.DNS域名解析采用的是递归查询的方式，过程是，先去找DNS缓存->缓存找不到就去找根域名服务器->根域名又会去找下一级，
+这样递归查找之后，找到了，给我们的web浏览器
+
+2.为什么HTTP协议要基于TCP来实现？  TCP是一个端到端的可靠的面相连接的协议，HTTP基于传输层TCP协议不用担心数据传输
+的各种问题（当发生错误时，会重传）
+
+3.最后一步浏览器是如何对页面进行渲染的？  a）解析html文件构成 DOM树，b）解析CSS文件构成渲染树，  c）边解析，
+边渲染 ，  d）JS 单线程运行，JS有可能修改DOM结构，意味着JS执行完成前，后续所有资源的下载是没有必要的，所以JS是
+单线程，会阻塞后续资源下载
+
+　1.域名解析
+　　a）首先会搜索浏览器自身的DNS缓存（缓存时间比较短，大概只有1分钟，且只能容纳1000条缓存）
+
+　　b）如果浏览器自身的缓存里面没有找到，那么浏览器会搜索系统自身的DNS缓存
+
+　　c）如果还没有找到，那么尝试从 hosts文件里面去找
+
+　　d）在前面三个过程都没获取到的情况下，就递归地去域名服务器去查找，具体过程如下
+
+DNS优化：两个方面：DNS缓存、DNS负载均衡
+
+　　2.TCP连接（三次握手）
+　　拿到域名对应的IP地址之后，User-Agent（一般指浏览器）会以一个随机端口（1024< 端口 <65535）向服务器的WEB
+程序（
+常用的有httpd，nginx）等的80端口。这个连接请求（原始的http请求经过TCP/IP4层模型的层层封包）到达服务器端后
+（这中间有各种路由设备，局域网内除外），进入到网卡，然后是进入到内核的TCP/IP协议栈（用于识别连接请求，解封包，
+一层一层的剥开），还有可能要经过Netfilter防火墙（属于内核的模块）的过滤，最终达到WEB程序，最终建立了TCP/IP的连接
+
+　　3.建立TCP连接之后，发起HTTP请求
+　　HTTP请求报文由三部分组成：请求行，请求头和请求正文
+
+　　请求行：用于描述客户端的请求方式，请求的资源名称以及使用的HTTP协议的版本号
+（例：GET/books/java.html HTTP/1.1）
+
+　　请求头：用于描述客户端请求哪台主机，以及客户端的一些环境信息等
+
+　　注：这里提一个请求头 Connection，Connection设置为 keep-alive用于说明 客户端这边设置的是，本次HTTP请求之
+后并不需要关闭TCP连接，这样可以使下次HTTP请求使用相同的TCP通道，节省TCP建立连接的时间
+
+　　请求正文：当使用POST, PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中（GET方式是保存
+在url地址后面，不会放到这里）
+
+　　4.服务器端响应http请求，浏览器得到html代码
+　　HTTP响应也由三部分组成：状态码，响应头和实体内容
+
+　　状态码：状态码用于表示服务器对请求的处理结果
+
+　　列举几种常见的：200（没有问题） 302（要你去找别人） 304（要你去拿缓存） 307（要你去拿缓存） 403（有这个资源，
+但是没有访问权限） 404（服务器没有这个资源） 500（服务器这边有问题）
+
+　　若干响应头：响应头用于描述服务器的基本信息，以及客户端如何处理数据
+
+　　实体内容：服务器返回给客户端的数据
+
+　　注：html资源文件应该不是通过 HTTP响应直接返回去的，应该是通过nginx通过io操作去拿到的吧
+
+　　5.浏览器解析html代码，并请求html代码中的资源
+　　浏览器拿到html文件后，就开始解析其中的html代码，遇到js/css/image等静态资源时，就向服务器端去请求下载
+（会使用多线程下载，每个浏览器的线程数不一样），这是时候就用上 keep-alive特性了，建立一次HTTP连接，可以请求多
+个资源，下载资源的顺序就是按照代码里面的顺序，但是由于每个资源大小不一样，而浏览器又是多线程请求请求资源，
+所以这里显示的顺序并不一定是代码里面的顺序。
+
+　　6.浏览器对页面进行渲染呈现给用户
+　　最后，浏览器利用自己内部的工作机制，把请求的静态资源和html代码进行渲染，渲染之后呈现给用户
+
+　　浏览器是一个边解析边渲染的过程。首先浏览器解析HTML文件构建DOM树，然后解析CSS文件构建渲染树，等到渲染树构建完成
+后，浏览器开始布局渲染树并将其绘制到屏幕上。这个过程比较复杂，涉及到两个概念: reflow(回流)和repain(重绘)。DOM节
+点中的各个元素都是以盒模型的形式存在，这些都需要浏览器去计算其位置和大小等，这个过程称为relow;当盒模型的位置,大小
+以及其他属性，如颜色,字体,等确定下来之后，浏览器便开始绘制内容，这个过程称为repain。页面在首次加载时必然会经历
+reflow和repain。reflow和repain过程是非常消耗性能的，尤其是在移动设备上，它会破坏用户体验，有时会造成页面卡顿 。
+所以我们应该尽可能少的减少reflow和repain。
+
+　　JS的解析是由浏览器中的JS解析引擎完成的。JS是单线程运行，JS有可能修改DOM结构，意味着JS执行完成前，后续所有资源
+的下载是没有必要的，所以JS是单线程，会阻塞后续资源下载
+
+　　自此一次完整的HTTP事务宣告完成.
+
+十五、算法：
+1、快速排序
+(1)
+const quickSort = (array) => {
+const sort = (arr, left = 0, right = arr.length - 1) => {
+if (left >= right) {//如果左边的索引大于等于右边的索引说明整理完毕
+return
+}
+let i = left
+let j = right
+const baseVal = arr[j] // 取无序数组最后一个数为基准值
+while (i < j) {//把所有比基准值小的数放在左边大的数放在右边
+while (i < j && arr[i] <= baseVal) { //找到一个比基准值大的数交换
+i++
+}
+arr[j] = arr[i] // 将较大的值放在右边如果没有比基准值大的数就是将自己赋值给自己（i 等于 j）
+while (j > i && arr[j] >= baseVal) { //找到一个比基准值小的数交换
+j--
+}
+arr[i] = arr[j] // 将较小的值放在左边如果没有找到比基准值小的数就是将自己赋值给自己（i 等于 j）
+}
+arr[j] = baseVal // 将基准值放至中央位置完成一次循环（这时候 j 等于 i ）
+sort(arr, left, j-1) // 将左边的无序数组重复上面的操作
+sort(arr, j+1, right) // 将右边的无序数组重复上面的操作
+}
+const newArr = array.concat() // 为了保证这个函数是纯函数拷贝一次数组
+sort(newArr)
+return newArr
+}
+
+(2)
+//（1）在数据集之中，选择一个元素作为"基准"（pivot）。
+//（2）所有小于"基准"的元素，都移到"基准"的左边；所有大于"基准"的元素，都移到"基准"的右边。
+//（3）对"基准"左边和右边的两个子集，不断重复第一步和第二步，直到所有子集只剩下一个元素为止。
+function sort6(array) {
+var tmp_array = array.slice(0), result,
+quickSort = function(arr) {
+if (arr.length <= 1) { return arr; }
+var pivotIndex = Math.floor(arr.length / 2);
+var pivot = arr.splice(pivotIndex, 1)[0];
+var left = [];
+var right = [];
+for (var i = 0; i < arr.length; i++){
+if (arr[i] < pivot) {
+left.push(arr[i]);
+} else {
+right.push(arr[i]);
+}
+}
+return quickSort(left).concat([pivot], quickSort(right));
+};
+result = quickSort(tmp_array);
+return result;
+}
+</body>
+</html>
